@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BF74A75C-8786-4475-813F-3D362D7C66A6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CASABLANCA</RootNamespace>
+    <AssemblyName>CASABLANCA</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.11.3.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.11.3\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="SpreadsheetLight, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpreadsheetLight.Fork.3.5.0\lib\netstandard2.0\SpreadsheetLight.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.5.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.7.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="app\business\AutosBus.cs" />
+    <Compile Include="app\business\ClientesBus.cs" />
+    <Compile Include="app\business\ComprasDiaBus.cs" />
+    <Compile Include="app\business\ComprasProveedorBus.cs" />
+    <Compile Include="app\business\DireccionesBus.cs" />
+    <Compile Include="app\business\HistServiciosProductosBus.cs" />
+    <Compile Include="app\business\IAutos.cs" />
+    <Compile Include="app\business\IClientes.cs" />
+    <Compile Include="app\business\IComprasDia.cs" />
+    <Compile Include="app\business\IComprasProveedores.cs" />
+    <Compile Include="app\business\IDirecciones.cs" />
+    <Compile Include="app\business\IHistServiciosProductos.cs" />
+    <Compile Include="app\business\IIngreso.cs" />
+    <Compile Include="app\business\ILogin.cs" />
+    <Compile Include="app\business\IngresoBus.cs" />
+    <Compile Include="app\business\IProductosProveedores.cs" />
+    <Compile Include="app\business\IServiciosProductos.cs" />
+    <Compile Include="app\business\IProveedores.cs" />
+    <Compile Include="app\business\IUsuarios.cs" />
+    <Compile Include="app\business\LoginBus.cs" />
+    <Compile Include="app\business\ProductosProveedoresBus.cs" />
+    <Compile Include="app\business\ProveedoresBus.cs" />
+    <Compile Include="app\business\ServiciosProductosBUS.cs" />
+    <Compile Include="app\business\UsuariosBus.cs" />
+    <Compile Include="app\client\Catalogos\frmAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmAlmacen.Designer.cs">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmAutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmAutos.Designer.cs">
+      <DependentUpon>frmAutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmProductosProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmProductosProveedores.Designer.cs">
+      <DependentUpon>frmProductosProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmProveedores.Designer.cs">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmServiciosProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Catalogos\frmServiciosProductos.Designer.cs">
+      <DependentUpon>frmServiciosProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Compras\frmComprasDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Compras\frmComprasDia.Designer.cs">
+      <DependentUpon>frmComprasDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Compras\frmComprasDiaEncabezado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Compras\frmComprasDiaEncabezado.Designer.cs">
+      <DependentUpon>frmComprasDiaEncabezado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Compras\frmComprasProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Compras\frmComprasProveedor.Designer.cs">
+      <DependentUpon>frmComprasProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Genericos\frmAuto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Genericos\frmAuto.Designer.cs">
+      <DependentUpon>frmAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Genericos\frmDireccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Genericos\frmDireccion.Designer.cs">
+      <DependentUpon>frmDireccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Historial\frmHistServiciosProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Historial\frmHistServiciosProductos.Designer.cs">
+      <DependentUpon>frmHistServiciosProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\IMainWindows.cs" />
+    <Compile Include="app\client\Ingreso\frmIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Ingreso\frmIngreso.Designer.cs">
+      <DependentUpon>frmIngreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Ingreso\frmIngresoEncabezado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Ingreso\frmIngresoEncabezado.Designer.cs">
+      <DependentUpon>frmIngresoEncabezado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\mainWindows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\mainWindows.Designer.cs">
+      <DependentUpon>mainWindows.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\client\Users\frmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\client\Users\frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\cls\Global.cs" />
+    <Compile Include="app\cls\IngresoCls.cs" />
+    <Compile Include="app\Commond\MasterMailServer.cs" />
+    <Compile Include="app\cls\userCls.cs" />
+    <Compile Include="app\Commond\frmMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="app\Commond\frmMessage.Designer.cs">
+      <DependentUpon>frmMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app\Commond\Methods.cs" />
+    <Compile Include="app\Commond\SystemSupportMail.cs" />
+    <Compile Include="app\dao\AutosDao.cs" />
+    <Compile Include="app\dao\CatProductosServiciosDao.cs" />
+    <Compile Include="app\dao\ClientesDao.cs" />
+    <Compile Include="app\dao\ComprasDiaDao.cs" />
+    <Compile Include="app\dao\connectionBDD.cs" />
+    <Compile Include="app\dao\DireccionesDao.cs" />
+    <Compile Include="app\dao\HistServiciosProductosDao.cs" />
+    <Compile Include="app\dao\cargoDao.cs" />
+    <Compile Include="app\dao\IngresoDao.cs" />
+    <Compile Include="app\dao\UniProveedoresServiciosProductos.cs" />
+    <Compile Include="app\dao\userDao.cs" />
+    <Compile Include="app\dao\ProductosProveedoresDao.cs" />
+    <Compile Include="app\dao\ProveedoresDao.cs" />
+    <Compile Include="app\dao\ServiciosProductosDao.cs" />
+    <Compile Include="Controls\DropDownList\DropDownList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DropDownList\menuColorTable.cs" />
+    <Compile Include="Controls\DropDownList\menuRenderer.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="app\client\Catalogos\frmAlmacen.resx">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Catalogos\frmAutos.resx">
+      <DependentUpon>frmAutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Catalogos\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Catalogos\frmProductosProveedores.resx">
+      <DependentUpon>frmProductosProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Catalogos\frmProveedores.resx">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Catalogos\frmServiciosProductos.resx">
+      <DependentUpon>frmServiciosProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Compras\frmComprasDia.resx">
+      <DependentUpon>frmComprasDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Compras\frmComprasDiaEncabezado.resx">
+      <DependentUpon>frmComprasDiaEncabezado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Compras\frmComprasProveedor.resx">
+      <DependentUpon>frmComprasProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Genericos\frmDireccion.resx">
+      <DependentUpon>frmDireccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Historial\frmHistServiciosProductos.resx">
+      <DependentUpon>frmHistServiciosProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Ingreso\frmIngreso.resx">
+      <DependentUpon>frmIngreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Ingreso\frmIngresoEncabezado.resx">
+      <DependentUpon>frmIngresoEncabezado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\mainWindows.resx">
+      <DependentUpon>mainWindows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\client\Users\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app\Commond\frmMessage.resx">
+      <DependentUpon>frmMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Images\importar.webp" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Importacion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\agregarAzul.png" />
+    <None Include="Images\actualizarAzul.png" />
+    <Content Include="Images\advertencia.png" />
+    <Content Include="Images\agregar.png" />
+    <Content Include="Images\autos.png" />
+    <Content Include="Images\autosAzul.png" />
+    <None Include="Images\exportarAzul.png" />
+    <None Include="Images\importarAzul.png" />
+    <None Include="Images\usuariosVerde.png" />
+    <None Include="Images\productosServiciosAzul.png" />
+    <None Include="Images\Papelera roja.png" />
+    <None Include="Images\flechaMinimizar.png" />
+    <None Include="Images\cerrarSesion.png" />
+    <Content Include="Images\autosBlanco.png" />
+    <Content Include="Images\balatas.png" />
+    <Content Include="Images\balatasBlanco.png" />
+    <None Include="Images\buscarImagen.png" />
+    <Content Include="Images\catalogos.png" />
+    <Content Include="Images\clutch.png" />
+    <Content Include="Images\clutchBlanco.png" />
+    <Content Include="Images\correcto.png" />
+    <Content Include="Images\error.png" />
+    <Content Include="Images\exportar.png" />
+    <Content Include="Images\flechaMaximizar.png" />
+    <Content Include="Images\Historico.png" />
+    <Content Include="Images\importar.png" />
+    <None Include="Images\ingresoAzul.png" />
+    <Content Include="Images\nuevo.png" />
+    <Content Include="Images\nuevoBlanco.png" />
+    <Content Include="Images\Papelera.png" />
+    <Content Include="Images\productosServicios.png" />
+    <Content Include="Images\productosServiciosVerdePequeña.png" />
+    <Content Include="Images\usuarios.png" />
+    <Content Include="logo icono sin fondo.ico" />
+    <None Include="Images\usuario.png" />
+    <None Include="Images\autosBlancoPequeña.png" />
+    <Content Include="Images\autosVerde.png" />
+    <None Include="Images\catalogosVerde %282%29.png" />
+    <None Include="Images\catalogosVerde.png" />
+    <None Include="Images\balatasBlancoPequeña.png" />
+    <Content Include="Images\clientes.png" />
+    <Content Include="Images\clientesAzul.png" />
+    <Content Include="Images\clientesBlanco.png" />
+    <None Include="Images\clientesBlancoPequeña.png" />
+    <Content Include="Images\clientesVerde.png" />
+    <None Include="Images\historicoVerde.png" />
+    <None Include="Images\clutchBlancoPequeña.png" />
+    <Content Include="Images\iconoCasaBlanca.jpg" />
+    <Content Include="Images\Iconos\autosAzul icono.ico" />
+    <Content Include="Images\Iconos\autosVerde.ico" />
+    <Content Include="Images\Iconos\clientesVerde.ico" />
+    <Content Include="Images\Iconos\ingresoVerde.ico" />
+    <Content Include="Images\Iconos\logo icono sin fondo.ico" />
+    <Content Include="Images\Iconos\proveedoresVerde.ico" />
+    <Content Include="Images\imprimir.png" />
+    <Content Include="Images\imprimirAzul.png" />
+    <Content Include="Images\imprimirVerde.png" />
+    <Content Include="Images\Ingreso.jpg" />
+    <Content Include="Images\ingreso.png" />
+    <Content Include="Images\ingresoBlanco.png" />
+    <Content Include="Images\ingresoNegro.png" />
+    <Content Include="Images\ingresos.jpg" />
+    <Content Include="Images\ingresoVerde.png" />
+    <Content Include="Images\Linea Gris Delgada.png" />
+    <Content Include="Images\Linea Gris.png" />
+    <Content Include="Images\Linea.png" />
+    <Content Include="Images\logo1.jpeg" />
+    <Content Include="Images\logo2.jpeg" />
+    <Content Include="Images\logo3.jpeg" />
+    <Content Include="Images\logo4.jpeg" />
+    <Content Include="Images\Logos\Logo Completo 2.jpeg" />
+    <Content Include="Images\Logos\Logo Completo.jpeg" />
+    <Content Include="Images\Logos\logo icono sin fondo.jpg" />
+    <Content Include="Images\Logos\logo icono sin fondo.png" />
+    <Content Include="Images\Logos\logo Icono.jpeg" />
+    <Content Include="Images\Logos\Logo Medio.jpeg" />
+    <Content Include="Images\Logos\LogoMargen.jpeg" />
+    <Content Include="Images\Maximizar.png" />
+    <Content Include="Images\Minimizar.jpg" />
+    <Content Include="Images\Minimizar.png" />
+    <None Include="Images\productosServiciosVerde.png" />
+    <None Include="Images\productosServiciosAzulPequeña2.png" />
+    <None Include="Images\productosServiciosAzulPequeña.png" />
+    <None Include="Images\productosServiciosAzulPequeña3.png" />
+    <None Include="Images\productosServiciosAzulPequeña4.png" />
+    <None Include="Images\productosServiciosBlanco.png" />
+    <None Include="Images\productosServiciosBlancoPequeña.png" />
+    <None Include="Images\nuevoBlancoPequeña.png" />
+    <Content Include="Images\proveedores.png" />
+    <Content Include="Images\proveedoresAzul.png" />
+    <Content Include="Images\proveedoresBlanco.png" />
+    <None Include="Images\proveedoresBlancoPequeña.png" />
+    <Content Include="Images\proveedoresVerde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
