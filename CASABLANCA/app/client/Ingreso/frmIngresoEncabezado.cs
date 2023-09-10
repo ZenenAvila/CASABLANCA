@@ -30,6 +30,7 @@ namespace CASABLANCA.app.client.Ingreso
             dgvImage.HeaderText = "Eliminar";
             dgvImage.Name = "eliminar";
             dgvEncabezados.Columns.Add(dgvImage);
+            lblRegistros.Text = "Total de Registros: " + dgvEncabezados.RowCount;
         }
 
         private void dgvEncabezados_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -49,6 +50,7 @@ namespace CASABLANCA.app.client.Ingreso
                     business.DeleteIngreso(Convert.ToInt32(dgvEncabezados.Rows[row].Cells[1].Value.ToString()));
                     business.DeleteIngresoRegistros(Convert.ToInt32(dgvEncabezados.Rows[row].Cells[1].Value.ToString()));
                     dgvEncabezados.Rows.Remove(dgvEncabezados.Rows[row]);
+                    lblRegistros.Text = "Total de Registros: " + dgvEncabezados.RowCount;
                 }
             }
         }

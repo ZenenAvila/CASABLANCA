@@ -25,7 +25,7 @@ namespace CASABLANCA.app.business
             decimal subtotal, int cantidad, decimal total);
         void deleteRegistrComprasDia(string idnoFacRem);
 
-        void updateExistencia(string producto, int id, string noParte, int idProv,
+        void updateExistencia(int nuevo, string producto, int id, string noParte, int idProv,
             string marca, decimal precioUni, int cantidad);
 
     }

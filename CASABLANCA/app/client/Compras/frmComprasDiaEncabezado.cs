@@ -43,7 +43,7 @@ namespace CASABLANCA.app.client.Compras
             dgvImage.Name = "eliminar";
             dgvEncabezados.Columns.Add(dgvImage);
 
-            lblRegistros.Text = "Total de Registros: " + dgvEncabezados.RowCount.ToString();
+            lblRegistros.Text = "Total de Registros: " + dgvEncabezados.RowCount;
         }
 
         private void dgvEncabezados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -77,6 +77,8 @@ namespace CASABLANCA.app.client.Compras
                     business.deleteComprasDia(Convert.ToInt32(dgvEncabezados.Rows[row].Cells[1].Value.ToString()));
                     business.deleteRegistrComprasDia(dgvEncabezados.Rows[row].Cells[1].Value.ToString());
                     dgvEncabezados.Rows.Remove(dgvEncabezados.Rows[row]);
+
+                    lblRegistros.Text = "Total de Registros: " + dgvEncabezados.RowCount;
                 }
             }
         }

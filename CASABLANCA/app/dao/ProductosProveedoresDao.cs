@@ -164,12 +164,13 @@ namespace CASABLANCA.app.dao
             cn.close();
         }
 
-        public void updateExistencia(string tabla, int id, string noParte,
+        public void updateExistencia(int nuevo,string tabla, int id, string noParte,
              int idProv,string marca, decimal precioUni, int cantidad)
         {
             cn.open();
             SqlCommand cmd = new SqlCommand("SP_UPDATE_EXISTENCIA_PRECIO", cn._connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@EXISTENCIA_NUEVA", nuevo);
             cmd.Parameters.AddWithValue("@TABLA", tabla);
             cmd.Parameters.AddWithValue("@ID", id);
             cmd.Parameters.AddWithValue("@NO_PARTE", noParte);

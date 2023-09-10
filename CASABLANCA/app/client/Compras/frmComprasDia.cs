@@ -388,7 +388,7 @@ namespace CASABLANCA.app.client.Compras
                 foreach (DataGridViewRow registroAct in dgvProductos.Rows)
                 {
                     DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registroAct.Cells["idProducto"].Value));
-                    business.updateExistencia(producto[0]["Nombre"].ToString(),
+                    business.updateExistencia(0,producto[0]["Nombre"].ToString(),
                         Convert.ToInt32(registroAct.Cells["id"].Value),
                        registroAct.Cells["noParte"].Value.ToString(),
                        Convert.ToInt32(cbxProveedores.SelectedValue),
@@ -419,8 +419,9 @@ namespace CASABLANCA.app.client.Compras
                                             cantidadAct = Convert.ToInt32(registroAct.Cells["cantidad"].Value);
 
                                         DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registroAct.Cells["idProducto"].Value));
-                                        business.updateExistencia(producto[0]["Nombre"].ToString(),
-                                                    Convert.ToInt32(registroAct.Cells["id"].Value),
+                                        business.updateExistencia(1,
+                                            producto[0]["Nombre"].ToString(),
+                                            Convert.ToInt32(registroAct.Cells["id"].Value),
                                             registroAct.Cells["noParte"].Value.ToString(),
                                             Convert.ToInt32(cbxProveedores.SelectedValue),
                                             registroAct.Cells["marca"].Value.ToString(),
@@ -433,14 +434,15 @@ namespace CASABLANCA.app.client.Compras
                             if (banEliminado)
                             {
                                 DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registro["ID_CAT_PROD_SERV"]));
-                                business.updateExistencia(producto[0]["Nombre"].ToString(),
+                                business.updateExistencia(2,
+                                    producto[0]["Nombre"].ToString(),
                                             Convert.ToInt32(registro["ID_PROD_SERV"]),
                                             Convert.ToString(registro["NO_PARTE"]),
-                                            Convert.ToInt32(cbxProveedores.SelectedValue), 
+                                            Convert.ToInt32(cbxProveedores.SelectedValue),
                                             Convert.ToString(registro["MARCA"]),
-                                            Convert.ToDecimal(registro["PRECIO_UNITARIO"]), 
+                                            Convert.ToDecimal(registro["PRECIO_UNITARIO"]),
                                             Convert.ToInt32(registro["CANTIDAD"]) * -1);
-                                    
+
                             }
                         }
                     }
@@ -466,7 +468,8 @@ namespace CASABLANCA.app.client.Compras
                                         //                (cantidad - cantidadAct) * -1);
 
                                         DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registroAct.Cells["idProducto"].Value));
-                                        business.updateExistencia(producto[0]["Nombre"].ToString(),
+                                        business.updateExistencia(1,
+                                            producto[0]["Nombre"].ToString(),
                                                     Convert.ToInt32(registro["ID_PROD_SERV"]),
                                             Convert.ToString(registro["NO_PARTE"]),
                                             Convert.ToInt32(cbxProveedores.SelectedValue),
@@ -480,7 +483,7 @@ namespace CASABLANCA.app.client.Compras
                             if (banAgregado)
                             {
                                 DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registroAct.Cells["idProducto"].Value));
-                                business.updateExistencia(producto[0]["Nombre"].ToString(), 
+                                business.updateExistencia(0,producto[0]["Nombre"].ToString(), 
                                     Convert.ToInt32(registroAct.Cells["id"].Value),
                                     registroAct.Cells["noParte"].Value.ToString(),
                                     Convert.ToInt32(cbxProveedores.SelectedValue),

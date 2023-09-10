@@ -378,7 +378,8 @@ namespace CASABLANCA.app.client.Ingreso
                 foreach (DataGridViewRow rows in dgvProductos.Rows)
                 {
                     DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(rows.Cells["IdProdServ"].Value));
-                    business.updateExistencia(producto[0]["Nombre"].ToString(),
+                    business.updateExistencia(0,
+                        producto[0]["Nombre"].ToString(),
                         Convert.ToInt32(rows.Cells["IdProducto"].Value),
                         rows.Cells["noParte"].Value.ToString(),
                         Convert.ToInt32(rows.Cells["idProveedor"].Value),
@@ -411,7 +412,8 @@ namespace CASABLANCA.app.client.Ingreso
                             //existencia = existencia * -1;//ACTUALIZAR EXISTENCIA
 
                             DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(rows.Cells["IdProdServ"].Value));
-                            business.updateExistencia(producto[0]["Nombre"].ToString(),
+                            business.updateExistencia(1,
+                                producto[0]["Nombre"].ToString(),
                                         Convert.ToInt32(rows.Cells["IdProducto"].Value),
                                 rows.Cells["noParte"].Value.ToString(),
                                 Convert.ToInt32(rows.Cells["idProveedor"].Value),
@@ -427,7 +429,7 @@ namespace CASABLANCA.app.client.Ingreso
                         foreach (DataRow row in dtRegistrosIngresos.Rows)
                         {
                             DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(row["ID_CAT_PROD_SERV"]));
-                            business.updateExistencia(producto[0]["Nombre"].ToString(),
+                            business.updateExistencia(0,producto[0]["Nombre"].ToString(),
                                         Convert.ToInt32(row["ID_PROD_SERV"].ToString()),
                                 row["NO_PARTE"].ToString(),
                                 1,//CAMIAR POR EL ID PROVEEDOR CORRECTO, SE DEBE GUARDAR EN A TABLA DE INGRESO Y LA DE COMPRAS
@@ -589,25 +591,6 @@ namespace CASABLANCA.app.client.Ingreso
                 dgvProductos.Rows.Remove(dgvProductos.Rows[row]);
                 calculoGeneral();
             }
-        }
-
-        private void updateExistencia(bool insert = true)
-        {
-            if (insert)
-            {
-                foreach (DataGridViewRow registroAct in dgvProductos.Rows)
-                {
-                    DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registroAct.Cells["idProducto"].Value));
-                    business.updateExistencia(producto[0]["Nombre"].ToString(),
-                                   Convert.ToInt32(registroAct.Cells["id"].Value),
-                                   registroAct.Cells["noParte"].Value.ToString(),
-                                   Convert.ToInt32(registroAct.Cells["idProveedor"].Value.ToString()),
-                                   registroAct.Cells["marca"].Value.ToString(),
-                                   Convert.ToDecimal(registroAct.Cells["precioUni"].Value),
-                                   Convert.ToInt32(registroAct.Cells["cantidad"].Value));
-                }
-            }
-
         }
 
         #region Traer Al Frente

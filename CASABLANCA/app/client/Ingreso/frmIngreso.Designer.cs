@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIngreso));
             this.pnlDatos = new System.Windows.Forms.Panel();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -372,8 +372,8 @@
             // dgvProductos
             // 
             this.dgvProductos.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -414,6 +414,7 @@
             // 
             // producto
             // 
+            this.producto.FillWeight = 150.6008F;
             this.producto.HeaderText = "Producto";
             this.producto.MinimumWidth = 6;
             this.producto.Name = "producto";
@@ -430,11 +431,12 @@
             // 
             // noParte
             // 
+            this.noParte.FillWeight = 142.3089F;
             this.noParte.HeaderText = "No. Parte";
             this.noParte.MinimumWidth = 6;
             this.noParte.Name = "noParte";
             this.noParte.ReadOnly = true;
-            this.noParte.Width = 97;
+            this.noParte.Width = 90;
             // 
             // idProveedor
             // 
@@ -446,6 +448,7 @@
             // 
             // proveedor
             // 
+            this.proveedor.FillWeight = 138.3432F;
             this.proveedor.HeaderText = "Proveedor";
             this.proveedor.MinimumWidth = 6;
             this.proveedor.Name = "proveedor";
@@ -453,6 +456,7 @@
             // 
             // marca
             // 
+            this.marca.FillWeight = 93.05968F;
             this.marca.HeaderText = "Marca";
             this.marca.MinimumWidth = 6;
             this.marca.Name = "marca";
@@ -461,13 +465,15 @@
             // 
             // precioUni
             // 
+            this.precioUni.FillWeight = 123.6235F;
             this.precioUni.HeaderText = "Precio Uni.";
             this.precioUni.MinimumWidth = 6;
             this.precioUni.Name = "precioUni";
-            this.precioUni.Width = 106;
+            this.precioUni.Width = 98;
             // 
             // iva
             // 
+            this.iva.FillWeight = 61.90007F;
             this.iva.HeaderText = "IVA";
             this.iva.MinimumWidth = 6;
             this.iva.Name = "iva";
@@ -477,6 +483,7 @@
             // 
             // descuento
             // 
+            this.descuento.FillWeight = 110.3166F;
             this.descuento.HeaderText = "Descuento";
             this.descuento.MinimumWidth = 6;
             this.descuento.Name = "descuento";
@@ -485,14 +492,16 @@
             // 
             // descuentoPor
             // 
+            this.descuentoPor.FillWeight = 117.2954F;
             this.descuentoPor.HeaderText = "Descuento %";
             this.descuentoPor.MinimumWidth = 6;
             this.descuentoPor.Name = "descuentoPor";
             this.descuentoPor.ReadOnly = true;
-            this.descuentoPor.Width = 121;
+            this.descuentoPor.Width = 111;
             // 
             // subtotal
             // 
+            this.subtotal.FillWeight = 78.21464F;
             this.subtotal.HeaderText = "Subtotal";
             this.subtotal.MinimumWidth = 6;
             this.subtotal.Name = "subtotal";
@@ -501,6 +510,7 @@
             // 
             // cantidad
             // 
+            this.cantidad.FillWeight = 78.15959F;
             this.cantidad.HeaderText = "Cantidad";
             this.cantidad.MinimumWidth = 6;
             this.cantidad.Name = "cantidad";
@@ -508,6 +518,7 @@
             // 
             // total
             // 
+            this.total.FillWeight = 55.34551F;
             this.total.HeaderText = "Total";
             this.total.MinimumWidth = 6;
             this.total.Name = "total";
@@ -516,6 +527,7 @@
             // 
             // eliminar
             // 
+            this.eliminar.FillWeight = 50.83207F;
             this.eliminar.HeaderText = "Eliminar";
             this.eliminar.MinimumWidth = 6;
             this.eliminar.Name = "eliminar";

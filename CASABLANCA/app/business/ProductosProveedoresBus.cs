@@ -88,10 +88,10 @@ namespace CASABLANCA.app.business
             dao.DeleteBalatas(id);
         }
         
-        public void updateExistencia(string tabla, int id, string noParte, 
+        public void updateExistencia(int nuevo,string tabla, int id, string noParte, 
             int idProv, string marca, decimal precioUni, int cantidad)
         {
-            dao.updateExistencia(tabla, id, noParte, idProv , marca, precioUni, cantidad);
+            dao.updateExistencia(nuevo,tabla, id, noParte, idProv , marca, precioUni, cantidad);
         }
     }
 }
