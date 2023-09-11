@@ -182,21 +182,41 @@ namespace CASABLANCA.app.client.Compras
 
         private void btnGuardarCompra_Click(object sender, EventArgs e)
         {
-
-            if (banActualizar)
+            if (!string.IsNullOrEmpty(txtNoRFacRem.Text))
             {
-                updateExistencia(false);
+                if (banActualizar)
+                {
 
-                business.updateComprasDia(idEncabezado,
-                    txtNoRFacRem.Text,
-                    Convert.ToInt32(cbxProductos.SelectedValue),
-                    Convert.ToInt32(cbxProveedores.SelectedValue),
-                    Convert.ToDecimal(txtSubtotal.Text),
-                    Convert.ToDecimal(txtIva.Text),
-                    Convert.ToDecimal(txtTotal.Text));
-                //Eliminar registros
-                business.deleteRegistrComprasDia(txtNoRFacRem.Text);
+                    business.updateComprasDia(Convert.ToInt32(txtId.Text),
+                        txtNoRFacRem.Text,
+                        Convert.ToInt32(cbxProductos.SelectedValue),
+                        Convert.ToInt32(cbxProveedores.SelectedValue),
+                        Convert.ToDecimal(txtSubtotal.Text),
+                        Convert.ToDecimal(txtIva.Text),
+                        Convert.ToDecimal(txtTotal.Text));
+                    //Eliminar registros
+                    business.deleteRegistrComprasDia(txtNoRFacRem.Text);
+                    updateExistencia(false);
 
+                    banActualizar = true;
+                    MessageBox.Show("La Compra Se Actualizó Correctamente.", "Compra Actualizada",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    txtId.Text= business.InsertComprasDia(txtNoRFacRem.Text,
+                        Convert.ToInt32(cbxProductos.SelectedValue),
+                        Convert.ToInt32(cbxProveedores.SelectedValue),
+                        Convert.ToDecimal(txtSubtotal.Text),
+                        Convert.ToDecimal(txtIva.Text),
+                        Convert.ToDecimal(txtTotal.Text));
+                    updateExistencia();
+
+                    banActualizar = true;
+                    btnGuardarCompra.Text = "Actualizar Compra";
+                    MessageBox.Show("La Compra Se Guardó Correctamente.", "Compra Guardada",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 foreach (DataGridViewRow row in dgvProductos.Rows)
                 {
@@ -214,48 +234,16 @@ namespace CASABLANCA.app.client.Compras
                         subtotal = Convert.ToDecimal(row.Cells["subtotal"].Value),
                         total = Convert.ToDecimal(row.Cells["total"].Value);
                     int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
-                    business.InsertRegistroComprasDia(noFacRem, idCatProdServ,idProveedor, idProdServ, noParte, marca, precioUni,
+                    business.InsertRegistroComprasDia(noFacRem, idCatProdServ, idProveedor, idProdServ, noParte, marca, precioUni,
                         iva, descuento, descuentoPor, subtotal, cantidad, total);
                 }
-                banActualizar = true;
-                MessageBox.Show("La Compra Se Actualizó Correctamente.", "Compra Actualizada",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dtRegistrosCompraDia = business.GetRegistrosComprasDia(txtNoRFacRem.Text);
             }
             else
             {
-                updateExistencia();
-                business.InsertComprasDia(txtNoRFacRem.Text,
-                    Convert.ToInt32(cbxProductos.SelectedValue),
-                    Convert.ToInt32(cbxProveedores.SelectedValue),
-                    Convert.ToDecimal(txtSubtotal.Text),
-                    Convert.ToDecimal(txtIva.Text),
-                    Convert.ToDecimal(txtTotal.Text));
-
-                foreach (DataGridViewRow row in dgvProductos.Rows)
-                {
-                    int idCatProdServ = Convert.ToInt32(row.Cells["idProducto"].Value);
-                    int idProdServ = Convert.ToInt32(row.Cells["id"].Value);
-                    int idProveedor = Convert.ToInt32(row.Cells["idProveedor"].Value);
-                    string noFacRem = txtNoRFacRem.Text,
-                        noParte = row.Cells["noParte"].Value.ToString(),
-                        marca = row.Cells["marca"].Value.ToString();
-                    decimal precioUni = Convert.ToDecimal(row.Cells["precioUni"].Value),
-                        iva = Convert.ToDecimal(row.Cells["iva"].Value),
-                        descuento = Convert.ToDecimal(row.Cells["descuento"].Value),
-                        descuentoPor = Convert.ToDecimal(row.Cells["descuentoPor"].Value
-                        .ToString().Replace('%', ' ')),
-                        subtotal = Convert.ToDecimal(row.Cells["subtotal"].Value),
-                        total = Convert.ToDecimal(row.Cells["total"].Value);
-                    int cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
-                    business.InsertRegistroComprasDia(noFacRem, idCatProdServ, idProveedor,idProdServ, noParte, marca, precioUni,
-                        iva, descuento, descuentoPor, subtotal, cantidad, total);
-                }
-                banActualizar = true;
-                btnGuardarCompra.Text = "Actualizar Compra";
-                MessageBox.Show("La Compra Se Guardó Correctamente.", "Compra Guardada",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El campo No. Factura/Remision está vacio", "Datos faltantes",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            dtRegistrosCompraDia = business.GetRegistrosComprasDia(txtNoRFacRem.Text);
         }
 
         private void cbxProveedores_SelectedIndexChanged(object sender, EventArgs e)
@@ -330,7 +318,6 @@ namespace CASABLANCA.app.client.Compras
         }
         bool banActualizar = false;
 
-        int idEncabezado;
         DataGridViewRow Encabezado;
         DataTable dtRegistrosCompraDia = null;
         public void cargarEncabezado(DataGridViewRow row)
@@ -338,7 +325,7 @@ namespace CASABLANCA.app.client.Compras
             banActualizar = true;
             btnGuardarCompra.Text = "Actualizar Compra";
             Encabezado = row;
-            idEncabezado = Convert.ToInt32(Encabezado.Cells[1].Value);
+            txtId.Text = Encabezado.Cells[1].Value.ToString();
 
             txtNoRFacRem.Text = Encabezado.Cells[2].Value.ToString();
             cargarProductos(Convert.ToInt32(Encabezado.Cells[3].Value) - 1);
@@ -388,7 +375,8 @@ namespace CASABLANCA.app.client.Compras
                 foreach (DataGridViewRow registroAct in dgvProductos.Rows)
                 {
                     DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registroAct.Cells["idProducto"].Value));
-                    business.updateExistencia(0,producto[0]["Nombre"].ToString(),
+                    business.updateExistencia(0, Convert.ToInt32(txtId.Text),
+                        "COMPRA", producto[0]["Nombre"].ToString(),
                         Convert.ToInt32(registroAct.Cells["id"].Value),
                        registroAct.Cells["noParte"].Value.ToString(),
                        Convert.ToInt32(cbxProveedores.SelectedValue),
@@ -419,8 +407,8 @@ namespace CASABLANCA.app.client.Compras
                                             cantidadAct = Convert.ToInt32(registroAct.Cells["cantidad"].Value);
 
                                         DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registroAct.Cells["idProducto"].Value));
-                                        business.updateExistencia(1,
-                                            producto[0]["Nombre"].ToString(),
+                                        business.updateExistencia(1, Convert.ToInt32(txtId.Text),
+                                            "COMPRA", producto[0]["Nombre"].ToString(),
                                             Convert.ToInt32(registroAct.Cells["id"].Value),
                                             registroAct.Cells["noParte"].Value.ToString(),
                                             Convert.ToInt32(cbxProveedores.SelectedValue),
@@ -434,14 +422,14 @@ namespace CASABLANCA.app.client.Compras
                             if (banEliminado)
                             {
                                 DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registro["ID_CAT_PROD_SERV"]));
-                                business.updateExistencia(2,
-                                    producto[0]["Nombre"].ToString(),
-                                            Convert.ToInt32(registro["ID_PROD_SERV"]),
-                                            Convert.ToString(registro["NO_PARTE"]),
-                                            Convert.ToInt32(cbxProveedores.SelectedValue),
-                                            Convert.ToString(registro["MARCA"]),
-                                            Convert.ToDecimal(registro["PRECIO_UNITARIO"]),
-                                            Convert.ToInt32(registro["CANTIDAD"]) * -1);
+                                business.updateExistencia(2, Convert.ToInt32(txtId.Text),
+                                    "COMPRA", producto[0]["Nombre"].ToString(),
+                                    Convert.ToInt32(registro["ID_PROD_SERV"]),
+                                    Convert.ToString(registro["NO_PARTE"]),
+                                    Convert.ToInt32(cbxProveedores.SelectedValue),
+                                    Convert.ToString(registro["MARCA"]),
+                                    Convert.ToDecimal(registro["PRECIO_UNITARIO"]),
+                                    Convert.ToInt32(registro["CANTIDAD"]) * -1);
 
                             }
                         }
@@ -468,9 +456,9 @@ namespace CASABLANCA.app.client.Compras
                                         //                (cantidad - cantidadAct) * -1);
 
                                         DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registroAct.Cells["idProducto"].Value));
-                                        business.updateExistencia(1,
-                                            producto[0]["Nombre"].ToString(),
-                                                    Convert.ToInt32(registro["ID_PROD_SERV"]),
+                                        business.updateExistencia(1, Convert.ToInt32(txtId.Text),
+                                            "COMPRA", producto[0]["Nombre"].ToString(),
+                                            Convert.ToInt32(registro["ID_PROD_SERV"]),
                                             Convert.ToString(registro["NO_PARTE"]),
                                             Convert.ToInt32(cbxProveedores.SelectedValue),
                                             Convert.ToString(registro["MARCA"]),
@@ -483,7 +471,8 @@ namespace CASABLANCA.app.client.Compras
                             if (banAgregado)
                             {
                                 DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(registroAct.Cells["idProducto"].Value));
-                                business.updateExistencia(0,producto[0]["Nombre"].ToString(), 
+                                business.updateExistencia(0,Convert.ToInt32(txtId.Text),
+                                    "COMPRA", producto[0]["Nombre"].ToString(), 
                                     Convert.ToInt32(registroAct.Cells["id"].Value),
                                     registroAct.Cells["noParte"].Value.ToString(),
                                     Convert.ToInt32(cbxProveedores.SelectedValue),

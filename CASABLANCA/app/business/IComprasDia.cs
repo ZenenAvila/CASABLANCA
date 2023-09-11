@@ -15,7 +15,7 @@ namespace CASABLANCA.app.business
         DataTable GetClutch(int idProveedor);
 
         DataTable GetComprasDia();
-        void InsertComprasDia(string noFactura, int idProducto, int idProveedor, decimal subTotal, decimal IVA, decimal Total);
+        string InsertComprasDia(string noFactura, int idProducto, int idProveedor, decimal subTotal, decimal IVA, decimal Total);
         void updateComprasDia(int id, string noFactura, int idProducto, int idProveedor, decimal subTotal, decimal IVA, decimal Total);
         void deleteComprasDia(int id);
 
@@ -25,8 +25,9 @@ namespace CASABLANCA.app.business
             decimal subtotal, int cantidad, decimal total);
         void deleteRegistrComprasDia(string idnoFacRem);
 
-        void updateExistencia(int nuevo, string producto, int id, string noParte, int idProv,
-            string marca, decimal precioUni, int cantidad);
+        void updateExistencia(int nuevo, int idProceso, string proceso,
+            string tabla, int idProducto, string noParte,
+             int idProveedor, string marca, decimal precioUni, int cantidad);
 
     }
 

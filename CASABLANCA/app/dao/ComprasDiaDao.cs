@@ -25,7 +25,7 @@ namespace CASABLANCA.app.dao
             return dt;
         }
 
-        public void InsertComprasDia(string noFactura, int idProducto, int idProveedor,  decimal subTotal, decimal IVA, decimal Total)
+        public string InsertComprasDia(string noFactura, int idProducto, int idProveedor,  decimal subTotal, decimal IVA, decimal Total)
         {
             cn.open();
             SqlCommand cmd = new SqlCommand("SP_INSERT_COMPRA_DIA", cn._connection);
@@ -36,8 +36,12 @@ namespace CASABLANCA.app.dao
             cmd.Parameters.AddWithValue("@SUBTOTAL", subTotal);
             cmd.Parameters.AddWithValue("@IVA", IVA);
             cmd.Parameters.AddWithValue("@TOTAL", Total);
-            cmd.ExecuteReader();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
             cn.close();
+            return dt.Rows[0][0].ToString();
         }
 
         public void updateComprasDia(int id, string noFactura, int idProducto, int idProveedor, decimal subTotal, decimal IVA, decimal Total)

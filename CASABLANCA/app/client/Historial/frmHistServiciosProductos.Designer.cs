@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistServiciosProductos));
             this.gbDatos = new System.Windows.Forms.GroupBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -43,14 +42,17 @@
             this.lblAnchoCeldas = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
             this.dgvPys = new System.Windows.Forms.DataGridView();
+            this.pbxActualizar = new System.Windows.Forms.PictureBox();
             this.gbDatos.SuspendLayout();
             this.gbPys.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPys)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxActualizar)).BeginInit();
             this.SuspendLayout();
             // 
             // gbDatos
             // 
             this.gbDatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(190)))), ((int)(((byte)(30)))));
+            this.gbDatos.Controls.Add(this.pbxActualizar);
             this.gbDatos.Controls.Add(this.txtNombre);
             this.gbDatos.Controls.Add(this.txtCodigo);
             this.gbDatos.Controls.Add(this.label4);
@@ -59,9 +61,9 @@
             this.gbDatos.Controls.Add(this.label2);
             this.gbDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDatos.Location = new System.Drawing.Point(20, 18);
-            this.gbDatos.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gbDatos.Margin = new System.Windows.Forms.Padding(5);
             this.gbDatos.Name = "gbDatos";
-            this.gbDatos.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.gbDatos.Padding = new System.Windows.Forms.Padding(5);
             this.gbDatos.Size = new System.Drawing.Size(783, 121);
             this.gbDatos.TabIndex = 7;
             this.gbDatos.TabStop = false;
@@ -70,9 +72,9 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(112, 80);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(643, 26);
+            this.txtNombre.Size = new System.Drawing.Size(590, 26);
             this.txtNombre.TabIndex = 13;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
@@ -81,7 +83,7 @@
             this.txtCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCodigo.Location = new System.Drawing.Point(507, 37);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(248, 26);
             this.txtCodigo.TabIndex = 8;
@@ -112,7 +114,7 @@
             // txtId
             // 
             this.txtId.Location = new System.Drawing.Point(112, 37);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(265, 26);
             this.txtId.TabIndex = 2;
@@ -137,9 +139,9 @@
             this.gbPys.Controls.Add(this.dgvPys);
             this.gbPys.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.gbPys.Location = new System.Drawing.Point(20, 148);
-            this.gbPys.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbPys.Margin = new System.Windows.Forms.Padding(4);
             this.gbPys.Name = "gbPys";
-            this.gbPys.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbPys.Padding = new System.Windows.Forms.Padding(4);
             this.gbPys.Size = new System.Drawing.Size(783, 712);
             this.gbPys.TabIndex = 9;
             this.gbPys.TabStop = false;
@@ -171,26 +173,18 @@
             this.dgvPys.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.dgvPys.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvPys.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
+            this.dgvPys.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPys.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPys.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPys.Location = new System.Drawing.Point(17, 26);
-            this.dgvPys.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPys.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPys.MultiSelect = false;
             this.dgvPys.Name = "dgvPys";
             this.dgvPys.RowHeadersVisible = false;
@@ -198,6 +192,19 @@
             this.dgvPys.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvPys.Size = new System.Drawing.Size(748, 647);
             this.dgvPys.TabIndex = 4;
+            // 
+            // pbxActualizar
+            // 
+            this.pbxActualizar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbxActualizar.Image = global::CASABLANCA.Properties.Resources.actualizarAzul;
+            this.pbxActualizar.Location = new System.Drawing.Point(710, 65);
+            this.pbxActualizar.Margin = new System.Windows.Forms.Padding(4);
+            this.pbxActualizar.Name = "pbxActualizar";
+            this.pbxActualizar.Size = new System.Drawing.Size(45, 42);
+            this.pbxActualizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxActualizar.TabIndex = 61;
+            this.pbxActualizar.TabStop = false;
+            this.pbxActualizar.Click += new System.EventHandler(this.pbxActualizar_Click);
             // 
             // frmHistServiciosProductos
             // 
@@ -209,17 +216,17 @@
             this.Controls.Add(this.gbPys);
             this.Controls.Add(this.gbDatos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmHistServiciosProductos";
             this.Text = "Historial Servicios y Productos";
             this.Load += new System.EventHandler(this.frmHistServiciosProductos_Load);
-            this.Click += new System.EventHandler(this.frmHistServiciosProductos_Click);
-            this.Move += new System.EventHandler(this.frmHistServiciosProductos_Move);
+            this.Enter += new System.EventHandler(this.frmHistServiciosProductos_Enter);
             this.gbDatos.ResumeLayout(false);
             this.gbDatos.PerformLayout();
             this.gbPys.ResumeLayout(false);
             this.gbPys.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPys)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxActualizar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -237,5 +244,6 @@
         private System.Windows.Forms.DataGridView dgvPys;
         private System.Windows.Forms.Label lblRegistros;
         private System.Windows.Forms.Label lblAnchoCeldas;
+        private System.Windows.Forms.PictureBox pbxActualizar;
     }
 }

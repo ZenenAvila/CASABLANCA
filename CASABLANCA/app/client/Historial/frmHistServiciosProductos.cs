@@ -27,16 +27,6 @@ namespace CASABLANCA.app.client.Historial
             consultar();
         }
 
-        private void frmHistServiciosProductos_Click(object sender, EventArgs e)
-        {
-            this.BringToFront();
-        }
-
-        private void frmHistServiciosProductos_Move(object sender, EventArgs e)
-        {
-            this.BringToFront();
-        }
-
         private void txtCodigo_TextChanged(object sender, EventArgs e)
         {
             filtro();
@@ -52,6 +42,10 @@ namespace CASABLANCA.app.client.Historial
         private void txtId_TextChanged(object sender, EventArgs e)
         {
             filtro();
+        }
+        private void pbxActualizar_Click(object sender, EventArgs e)
+        {
+            consultar();
         }
         #endregion
 
@@ -125,14 +119,21 @@ namespace CASABLANCA.app.client.Historial
                 List<Methods> busqueda = new List<Methods>();
                 busqueda.Add(new Methods { texto = txtCodigo.Text, celda = 2 });
                 busqueda.Add(new Methods { texto = txtId.Text, celda = 0 });
-                Methods fil = new Methods();
-                fil.filtrarDGV(dgvPys, busqueda,lblRegistros);
+                Methods metodo = new Methods();
+                metodo.filtrarDGV(dgvPys, busqueda,lblRegistros);
                 
             }
             else
             {
                 consultar();
             }
+        }
+        #endregion
+
+        #region Traer Al Frente
+        private void frmHistServiciosProductos_Enter(object sender, EventArgs e)
+        {
+            this.BringToFront();
         }
         #endregion
     }

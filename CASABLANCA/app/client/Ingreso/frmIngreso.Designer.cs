@@ -431,7 +431,7 @@
             // 
             // noParte
             // 
-            this.noParte.FillWeight = 142.3089F;
+            this.noParte.FillWeight = 144.267F;
             this.noParte.HeaderText = "No. Parte";
             this.noParte.MinimumWidth = 6;
             this.noParte.Name = "noParte";
@@ -448,7 +448,7 @@
             // 
             // proveedor
             // 
-            this.proveedor.FillWeight = 138.3432F;
+            this.proveedor.FillWeight = 141.7435F;
             this.proveedor.HeaderText = "Proveedor";
             this.proveedor.MinimumWidth = 6;
             this.proveedor.Name = "proveedor";
@@ -456,7 +456,7 @@
             // 
             // marca
             // 
-            this.marca.FillWeight = 93.05968F;
+            this.marca.FillWeight = 96.2244F;
             this.marca.HeaderText = "Marca";
             this.marca.MinimumWidth = 6;
             this.marca.Name = "marca";
@@ -465,7 +465,7 @@
             // 
             // precioUni
             // 
-            this.precioUni.FillWeight = 123.6235F;
+            this.precioUni.FillWeight = 126.2373F;
             this.precioUni.HeaderText = "Precio Uni.";
             this.precioUni.MinimumWidth = 6;
             this.precioUni.Name = "precioUni";
@@ -473,7 +473,7 @@
             // 
             // iva
             // 
-            this.iva.FillWeight = 61.90007F;
+            this.iva.FillWeight = 63.40292F;
             this.iva.HeaderText = "IVA";
             this.iva.MinimumWidth = 6;
             this.iva.Name = "iva";
@@ -483,7 +483,7 @@
             // 
             // descuento
             // 
-            this.descuento.FillWeight = 110.3166F;
+            this.descuento.FillWeight = 109.614F;
             this.descuento.HeaderText = "Descuento";
             this.descuento.MinimumWidth = 6;
             this.descuento.Name = "descuento";
@@ -492,7 +492,7 @@
             // 
             // descuentoPor
             // 
-            this.descuentoPor.FillWeight = 117.2954F;
+            this.descuentoPor.FillWeight = 116.2512F;
             this.descuentoPor.HeaderText = "Descuento %";
             this.descuentoPor.MinimumWidth = 6;
             this.descuentoPor.Name = "descuentoPor";
@@ -501,7 +501,7 @@
             // 
             // subtotal
             // 
-            this.subtotal.FillWeight = 78.21464F;
+            this.subtotal.FillWeight = 77.67018F;
             this.subtotal.HeaderText = "Subtotal";
             this.subtotal.MinimumWidth = 6;
             this.subtotal.Name = "subtotal";
@@ -510,7 +510,7 @@
             // 
             // cantidad
             // 
-            this.cantidad.FillWeight = 78.15959F;
+            this.cantidad.FillWeight = 75.6815F;
             this.cantidad.HeaderText = "Cantidad";
             this.cantidad.MinimumWidth = 6;
             this.cantidad.Name = "cantidad";
@@ -518,7 +518,7 @@
             // 
             // total
             // 
-            this.total.FillWeight = 55.34551F;
+            this.total.FillWeight = 52.26638F;
             this.total.HeaderText = "Total";
             this.total.MinimumWidth = 6;
             this.total.Name = "total";
@@ -527,7 +527,7 @@
             // 
             // eliminar
             // 
-            this.eliminar.FillWeight = 50.83207F;
+            this.eliminar.FillWeight = 46.04087F;
             this.eliminar.HeaderText = "Eliminar";
             this.eliminar.MinimumWidth = 6;
             this.eliminar.Name = "eliminar";

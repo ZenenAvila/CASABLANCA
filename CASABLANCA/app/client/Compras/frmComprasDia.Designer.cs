@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbDatos = new System.Windows.Forms.GroupBox();
             this.pbxProductos = new System.Windows.Forms.PictureBox();
             this.btnProveedores = new System.Windows.Forms.PictureBox();
@@ -67,6 +68,8 @@
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.gbDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnProveedores)).BeginInit();
@@ -77,6 +80,8 @@
             // gbDatos
             // 
             this.gbDatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(190)))), ((int)(((byte)(30)))));
+            this.gbDatos.Controls.Add(this.txtId);
+            this.gbDatos.Controls.Add(this.label11);
             this.gbDatos.Controls.Add(this.pbxProductos);
             this.gbDatos.Controls.Add(this.btnProveedores);
             this.gbDatos.Controls.Add(this.txtNoRFacRem);
@@ -127,17 +132,18 @@
             // txtNoRFacRem
             // 
             this.txtNoRFacRem.AcceptsReturn = true;
-            this.txtNoRFacRem.Location = new System.Drawing.Point(17, 57);
+            this.txtNoRFacRem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtNoRFacRem.Location = new System.Drawing.Point(89, 57);
             this.txtNoRFacRem.Margin = new System.Windows.Forms.Padding(4);
             this.txtNoRFacRem.Name = "txtNoRFacRem";
-            this.txtNoRFacRem.Size = new System.Drawing.Size(301, 26);
+            this.txtNoRFacRem.Size = new System.Drawing.Size(229, 23);
             this.txtNoRFacRem.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 33);
+            this.label2.Location = new System.Drawing.Point(85, 33);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(197, 20);
@@ -146,11 +152,12 @@
             // 
             // cbxNoParte
             // 
+            this.cbxNoParte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cbxNoParte.FormattingEnabled = true;
             this.cbxNoParte.Location = new System.Drawing.Point(348, 127);
             this.cbxNoParte.Margin = new System.Windows.Forms.Padding(4);
             this.cbxNoParte.Name = "cbxNoParte";
-            this.cbxNoParte.Size = new System.Drawing.Size(311, 28);
+            this.cbxNoParte.Size = new System.Drawing.Size(311, 25);
             this.cbxNoParte.TabIndex = 18;
             // 
             // label1
@@ -166,21 +173,23 @@
             // 
             // cbxProveedores
             // 
+            this.cbxProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cbxProveedores.FormattingEnabled = true;
             this.cbxProveedores.Location = new System.Drawing.Point(348, 57);
             this.cbxProveedores.Margin = new System.Windows.Forms.Padding(4);
             this.cbxProveedores.Name = "cbxProveedores";
-            this.cbxProveedores.Size = new System.Drawing.Size(373, 28);
+            this.cbxProveedores.Size = new System.Drawing.Size(373, 25);
             this.cbxProveedores.TabIndex = 16;
             this.cbxProveedores.SelectedIndexChanged += new System.EventHandler(this.cbxProveedores_SelectedIndexChanged);
             // 
             // cbxProductos
             // 
+            this.cbxProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cbxProductos.FormattingEnabled = true;
             this.cbxProductos.Location = new System.Drawing.Point(17, 127);
             this.cbxProductos.Margin = new System.Windows.Forms.Padding(4);
             this.cbxProductos.Name = "cbxProductos";
-            this.cbxProductos.Size = new System.Drawing.Size(251, 28);
+            this.cbxProductos.Size = new System.Drawing.Size(251, 25);
             this.cbxProductos.TabIndex = 15;
             this.cbxProductos.SelectedIndexChanged += new System.EventHandler(this.cbxProductos_SelectedIndexChanged);
             // 
@@ -340,6 +349,14 @@
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idProducto,
@@ -384,7 +401,7 @@
             this.prodServ.MinimumWidth = 6;
             this.prodServ.Name = "prodServ";
             this.prodServ.ReadOnly = true;
-            this.prodServ.Width = 113;
+            this.prodServ.Width = 94;
             // 
             // id
             // 
@@ -401,7 +418,7 @@
             this.noParte.MinimumWidth = 6;
             this.noParte.Name = "noParte";
             this.noParte.ReadOnly = true;
-            this.noParte.Width = 108;
+            this.noParte.Width = 97;
             // 
             // idProveedor
             // 
@@ -418,7 +435,7 @@
             this.proveedor.MinimumWidth = 6;
             this.proveedor.Name = "proveedor";
             this.proveedor.ReadOnly = true;
-            this.proveedor.Width = 123;
+            this.proveedor.Width = 103;
             // 
             // marca
             // 
@@ -426,14 +443,14 @@
             this.marca.MinimumWidth = 6;
             this.marca.Name = "marca";
             this.marca.ReadOnly = true;
-            this.marca.Width = 90;
+            this.marca.Width = 76;
             // 
             // precioUni
             // 
             this.precioUni.HeaderText = "Precio Uni.";
             this.precioUni.MinimumWidth = 6;
             this.precioUni.Name = "precioUni";
-            this.precioUni.Width = 120;
+            this.precioUni.Width = 106;
             // 
             // iva
             // 
@@ -442,7 +459,7 @@
             this.iva.Name = "iva";
             this.iva.ReadOnly = true;
             this.iva.ToolTipText = "El IVA es del  16%";
-            this.iva.Width = 67;
+            this.iva.Width = 58;
             // 
             // descuento
             // 
@@ -450,7 +467,7 @@
             this.descuento.MinimumWidth = 6;
             this.descuento.Name = "descuento";
             this.descuento.ToolTipText = "Valor permitido de 1 a 100";
-            this.descuento.Width = 128;
+            this.descuento.Width = 105;
             // 
             // descuentoPor
             // 
@@ -458,7 +475,7 @@
             this.descuentoPor.MinimumWidth = 6;
             this.descuentoPor.Name = "descuentoPor";
             this.descuentoPor.ReadOnly = true;
-            this.descuentoPor.Width = 137;
+            this.descuentoPor.Width = 121;
             // 
             // subtotal
             // 
@@ -466,14 +483,14 @@
             this.subtotal.MinimumWidth = 6;
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 107;
+            this.subtotal.Width = 89;
             // 
             // cantidad
             // 
             this.cantidad.HeaderText = "Cantidad";
             this.cantidad.MinimumWidth = 6;
             this.cantidad.Name = "cantidad";
-            this.cantidad.Width = 112;
+            this.cantidad.Width = 93;
             // 
             // total
             // 
@@ -481,7 +498,7 @@
             this.total.MinimumWidth = 6;
             this.total.Name = "total";
             this.total.ReadOnly = true;
-            this.total.Width = 80;
+            this.total.Width = 69;
             // 
             // eliminar
             // 
@@ -489,7 +506,28 @@
             this.eliminar.MinimumWidth = 6;
             this.eliminar.Name = "eliminar";
             this.eliminar.ReadOnly = true;
-            this.eliminar.Width = 84;
+            this.eliminar.Width = 64;
+            // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtId.Location = new System.Drawing.Point(17, 57);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(54, 23);
+            this.txtId.TabIndex = 65;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(13, 33);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(30, 20);
+            this.label11.TabIndex = 64;
+            this.label11.Text = "Id:";
             // 
             // frmComprasDia
             // 
@@ -556,5 +594,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.DataGridViewImageColumn eliminar;
+        public System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -40,9 +40,9 @@ namespace CASABLANCA.app.business
             return ComprasDao.GetComprasDia();
         }
 
-        public void InsertComprasDia( string noFactura, int idProducto, int idProveedor, decimal subTotal, decimal IVA, decimal Total)
+        public string InsertComprasDia( string noFactura, int idProducto, int idProveedor, decimal subTotal, decimal IVA, decimal Total)
         {
-            ComprasDao.InsertComprasDia( noFactura, idProducto, idProveedor, subTotal, IVA, Total);
+            return ComprasDao.InsertComprasDia( noFactura, idProducto, idProveedor, subTotal, IVA, Total);
         }
 
         public void updateComprasDia(int id, string noFactura, int idProducto, int idProveedor, decimal subTotal, decimal IVA, decimal Total)
@@ -74,11 +74,12 @@ namespace CASABLANCA.app.business
             ComprasDao.deleteRegistrComprasDia(idnoFacRem);
         }
 
-        public void updateExistencia(int nuevo, string producto, int id, string noParte, int idProv,
-            string marca, decimal precioUni, int cantidad)
+        public void updateExistencia(int nuevo, int idProceso, string proceso,
+            string tabla, int idProducto, string noParte,
+             int idProveedor, string marca, decimal precioUni, int cantidad)
         {
-            BalatasDao.updateExistencia(nuevo,producto.ToUpper(), id, 
-            noParte, idProv, marca, precioUni, cantidad);
+            BalatasDao.updateExistencia(nuevo, idProceso, proceso, tabla.ToUpper(),
+                idProducto, noParte, idProveedor, marca, precioUni, cantidad);
         }
     }
 }

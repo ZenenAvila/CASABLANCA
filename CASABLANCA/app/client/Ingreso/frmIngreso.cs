@@ -339,12 +339,15 @@ namespace CASABLANCA.app.client.Ingreso
             if (string.IsNullOrEmpty(txtId.Text))
             {
                 txtId.Text = business.InsertIngreso(obj).Rows[0][0].ToString();
-                //MessageBox.Show(, "Ingreso Guardado Correctamente.",MessageBoxIcon., MessageBoxButtons.OK);
+                MessageBox.Show("El Ingreso Se Guardó Correctamente.", "Ingreso Guardado",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 obj.Id = Convert.ToInt32(txtId.Text);
                 business.UpdateIngreso(obj);
+                MessageBox.Show("El Ingreso Se Actualizó Correctamente.", "Ingreso Actualizado",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             //Registros
@@ -355,7 +358,7 @@ namespace CASABLANCA.app.client.Ingreso
                 objRegistros.IdIngreso = Convert.ToInt32(txtId.Text);
                 objRegistros.IdCatProdServ = Convert.ToInt32(row.Cells["idProdServ"].Value.ToString());
                 objRegistros.IdProveedor = Convert.ToInt32(row.Cells["idProveedor"].Value.ToString());
-                objRegistros.IdProdServ = Convert.ToInt32(row.Cells["idProdServ"].Value.ToString());
+                objRegistros.IdProdServ = Convert.ToInt32(row.Cells["idProducto"].Value.ToString());
                 objRegistros.NoParte = row.Cells["noParte"].Value.ToString();
                 objRegistros.Marca = row.Cells["marca"].Value.ToString();
                 objRegistros.PrecioUnitario = Convert.ToDecimal(row.Cells["precioUni"].Value.ToString());
@@ -378,8 +381,8 @@ namespace CASABLANCA.app.client.Ingreso
                 foreach (DataGridViewRow rows in dgvProductos.Rows)
                 {
                     DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(rows.Cells["IdProdServ"].Value));
-                    business.updateExistencia(0,
-                        producto[0]["Nombre"].ToString(),
+                    business.updateExistencia(0, Convert.ToInt32(txtId.Text),
+                        "INGRESO", producto[0]["Nombre"].ToString(),
                         Convert.ToInt32(rows.Cells["IdProducto"].Value),
                         rows.Cells["noParte"].Value.ToString(),
                         Convert.ToInt32(rows.Cells["idProveedor"].Value),
@@ -398,22 +401,26 @@ namespace CASABLANCA.app.client.Ingreso
                         var registro = dtRegistrosIngresos.Select("NO_PARTE = '" + rows.Cells["noParte"].Value + "'").FirstOrDefault();
 
                         int existenciaIni = 0, existenciaAct = 0, existencia = 0;
+                        decimal precioIni = 0, precioAct = 0, precio = 0;
                         if (registro != null)
                         {
                             existenciaIni = Convert.ToInt32(registro["CANTIDAD"].ToString());
+                            precioIni = Convert.ToDecimal(registro["PRECIO_UNITARIO"].ToString());
                             dtRegistrosIngresos.Rows.Remove(registro);
                         }
                         existenciaAct = Convert.ToInt32(rows.Cells["cantidad"].Value);
+                        precioAct = Convert.ToDecimal(rows.Cells["precioUni"].Value);
 
                         existencia = existenciaAct - existenciaIni;
+                        precio = precioAct - precioIni;
 
-                        if (existencia != 0)
+                        if (existencia != 0 | precio != 0)
                         {
                             //existencia = existencia * -1;//ACTUALIZAR EXISTENCIA
 
                             DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(rows.Cells["IdProdServ"].Value));
-                            business.updateExistencia(1,
-                                producto[0]["Nombre"].ToString(),
+                            business.updateExistencia(1, Convert.ToInt32(txtId.Text),
+                                "INGRESO", producto[0]["Nombre"].ToString(),
                                         Convert.ToInt32(rows.Cells["IdProducto"].Value),
                                 rows.Cells["noParte"].Value.ToString(),
                                 Convert.ToInt32(rows.Cells["idProveedor"].Value),
@@ -429,10 +436,11 @@ namespace CASABLANCA.app.client.Ingreso
                         foreach (DataRow row in dtRegistrosIngresos.Rows)
                         {
                             DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(row["ID_CAT_PROD_SERV"]));
-                            business.updateExistencia(0,producto[0]["Nombre"].ToString(),
-                                        Convert.ToInt32(row["ID_PROD_SERV"].ToString()),
+                            business.updateExistencia(2, Convert.ToInt32(txtId.Text),
+                                "INGRESO", producto[0]["Nombre"].ToString(),
+                                Convert.ToInt32(row["ID_PROD_SERV"].ToString()),
                                 row["NO_PARTE"].ToString(),
-                                1,//CAMIAR POR EL ID PROVEEDOR CORRECTO, SE DEBE GUARDAR EN A TABLA DE INGRESO Y LA DE COMPRAS
+                                Convert.ToInt32(row["ID_PROVEEDOR"].ToString()),
                                 row["MARCA"].ToString(),
                                 Convert.ToDecimal(row["PRECIO_UNITARIO"].ToString()),
                                 Convert.ToInt32(row["CANTIDAD"].ToString())
@@ -442,10 +450,18 @@ namespace CASABLANCA.app.client.Ingreso
                 }
                 else
                 {
-                    foreach (DataRow row in dtRegistrosIngresos.Rows)
+                    foreach (DataGridViewRow rows in dgvProductos.Rows)
                     {
-                        var a = Convert.ToInt32(row["CANTIDAD"].ToString()) * -1;//ACTUALIZAR EXISTENCIA
-                                                                                 //business.updateExistencia()
+                        DataRow[] producto = dtProductos.Select("ID = " + Convert.ToInt32(rows.Cells["IdProdServ"].Value));
+                        business.updateExistencia(0, Convert.ToInt32(txtId.Text),
+                            "INGRESO", producto[0]["Nombre"].ToString(),
+                            Convert.ToInt32(rows.Cells["IdProducto"].Value),
+                            rows.Cells["noParte"].Value.ToString(),
+                            Convert.ToInt32(rows.Cells["idProveedor"].Value),
+                            rows.Cells["marca"].Value.ToString(),
+                            Convert.ToDecimal(rows.Cells["precioUni"].Value),
+                            Convert.ToInt32(rows.Cells["cantidad"].Value) * -1
+                            );
                     }
                 }
             }

@@ -54,11 +54,12 @@ namespace CASABLANCA.app.business
             dao.DeleteIngresoRegistros(id);
         }
 
-        public void updateExistencia(int nuevo,string prodServ, int id, string noParte, int idProv,
-            string marca, decimal precioUni, int cantidad)
+        public void updateExistencia(int nuevo, int idProceso, string proceso,
+            string tabla, int idProducto, string noParte,
+             int idProveedor, string marca, decimal precioUni, int cantidad)
         {
-            BalatasDao.updateExistencia(nuevo,prodServ.ToUpper(), id,
-            noParte, idProv, marca, precioUni, cantidad);
+            BalatasDao.updateExistencia(nuevo,idProceso,proceso,tabla.ToUpper(), 
+                idProducto, noParte, idProveedor, marca, precioUni, cantidad);
         }
     }
 }

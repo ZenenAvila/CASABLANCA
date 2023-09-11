@@ -33,7 +33,8 @@ namespace CASABLANCA.app.business
             bool abutment, string aplicacion, string modelo, string formula, decimal precioPublico,
             string observaciones);
         void DeleteBalatas(int id);
-        void updateExistencia(int nuevo,string tabla, int id, string noParte,
-            int idProv, string marca, decimal precioUni, int cantidad);
+        void updateExistencia(int nuevo, int idProceso, string proceso,
+            string tabla, int idProducto, string noParte,
+             int idProveedor, string marca, decimal precioUni, int cantidad);
     }
 }
