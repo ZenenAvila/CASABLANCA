@@ -114,13 +114,15 @@ namespace CASABLANCA.app.client.Historial
         //}
         public void filtro()
         {
-            if (txtId.Text != "" || txtNombre.Text != "" || txtCodigo.Text != "")
+            //if (txtId.Text != "" || txtNombre.Text != "" || txtCodigo.Text != "")
+            if (txtId.Text != "")
             {
-                List<Methods> busqueda = new List<Methods>();
-                busqueda.Add(new Methods { texto = txtCodigo.Text, celda = 2 });
-                busqueda.Add(new Methods { texto = txtId.Text, celda = 0 });
+                //List<Methods> busqueda = new List<Methods>();
+                //busqueda.Add(new Methods { texto = txtCodigo.Text, celda = 2 });
+                //busqueda.Add(new Methods { texto = txtId.Text, celda = 0 });
                 Methods metodo = new Methods();
-                metodo.filtrarDGV(dgvPys, busqueda,lblRegistros);
+                metodo.parametros(txtId.Text, 0);
+                metodo.filtrarDGV(dgvPys,lblRegistros);
                 
             }
             else

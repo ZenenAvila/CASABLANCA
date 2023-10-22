@@ -12,11 +12,12 @@ namespace CASABLANCA.app.dao
     {
         connectionBDD cn = new connectionBDD();
 
-        public DataTable Get()
+        public DataTable Get(int idProveedor)
         {
             cn.open();
             SqlCommand cmd = new SqlCommand("SP_GET_PRODUCTOS_SERVICIOS", cn._connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID_PROVEEDOR", idProveedor);
             SqlDataReader reader = cmd.ExecuteReader();
 
             DataTable dt = new DataTable();
@@ -25,13 +26,18 @@ namespace CASABLANCA.app.dao
             return dt;
         }
 
-        public DataTable Insert(string codigo, string nombre, decimal precioUnitario)
+        public DataTable Insert(string producto, bool esServicio,string numeroParte, 
+            string descripcion, int idProveedor, decimal precioCompra, decimal precioUnitario)
         {
             cn.open();
             SqlCommand cmd = new SqlCommand("SP_INSERT_PRODUCTOS_SERVICIOS", cn._connection);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@CODIGO", codigo);
-            cmd.Parameters.AddWithValue("@NOMBRE", nombre);
+            cmd.Parameters.AddWithValue("@PRODUCTO", producto);
+            cmd.Parameters.AddWithValue("@ES_SERVICIO", esServicio);
+            cmd.Parameters.AddWithValue("@NUMERO_PARTE", numeroParte);
+            cmd.Parameters.AddWithValue("@DESCRIPCION", descripcion);
+            cmd.Parameters.AddWithValue("@ID_PROVEEDOR", idProveedor);
+            cmd.Parameters.AddWithValue("@PRECIO_COMPRA", precioCompra);
             cmd.Parameters.AddWithValue("@PRECIO_UNITARIO", precioUnitario);
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -41,14 +47,19 @@ namespace CASABLANCA.app.dao
             return dt;
         }
 
-        public DataTable Update(int id, string codigo, string nombre, decimal precioUnitario)
+        public DataTable Update(int id, string producto, bool esServicio, string numeroParte,
+            string descripcion, int idProveedor, decimal precioCompra, decimal precioUnitario)
         {
             cn.open();
             SqlCommand cmd = new SqlCommand("SP_UPDATE_PRODUCTOS_SERVICIOS", cn._connection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@ID", id);
-            cmd.Parameters.AddWithValue("@CODIGO", codigo);
-            cmd.Parameters.AddWithValue("@NOMBRE", nombre);
+            cmd.Parameters.AddWithValue("@PRODUCTO", producto);
+            cmd.Parameters.AddWithValue("@ES_SERVICIO", esServicio);
+            cmd.Parameters.AddWithValue("@NUMERO_PARTE", numeroParte);
+            cmd.Parameters.AddWithValue("@DESCRIPCION", descripcion);
+            cmd.Parameters.AddWithValue("@ID_PROVEEDOR", idProveedor);
+            cmd.Parameters.AddWithValue("@PRECIO_COMPRA", precioCompra);
             cmd.Parameters.AddWithValue("@PRECIO_UNITARIO", precioUnitario);
             SqlDataReader reader = cmd.ExecuteReader();
 

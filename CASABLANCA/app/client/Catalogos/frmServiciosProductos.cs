@@ -52,7 +52,7 @@ namespace CASABLANCA.app.client.Catalogos
             {
                 try
                 {
-                    business.Insert(txtCodigo.Text, txtNombre.Text, Convert.ToDecimal(txtPU.Text));
+                    //business.Insert(txtCodigo.Text, txtNombre.Text, Convert.ToDecimal(txtPU.Text));
                     consultar();
                     limpiarDatos();
                 }
@@ -74,7 +74,7 @@ namespace CASABLANCA.app.client.Catalogos
             {
                 try
                 {
-                    business.Update(Convert.ToInt32(txtId.Text), txtCodigo.Text, txtNombre.Text, Convert.ToDecimal(txtPU.Text));
+                    //business.Update(Convert.ToInt32(txtId.Text), txtCodigo.Text, txtNombre.Text, Convert.ToDecimal(txtPU.Text));
                     consultar();
 
                     limpiarDatos();
@@ -153,7 +153,7 @@ namespace CASABLANCA.app.client.Catalogos
         {
             try
             {
-                dgvPys.DataSource = business.Get();
+                //dgvPys.DataSource = business.Get();
                 dgvPys.Refresh();
 
                 dgvPys.Columns[0].Width = 35;

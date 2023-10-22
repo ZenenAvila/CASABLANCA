@@ -9,9 +9,11 @@ namespace CASABLANCA.app.business
 {
     public interface IServiciosProductos
     {
-        DataTable Get();
-        DataTable Insert(string codigo, string nombre, decimal precioUnitario);
-        DataTable Update(int id, string codigo, string nombre, decimal precioUnitario);
+        DataTable Get(int idProveedor);
+        DataTable Insert(string producto, bool esServicio, string numeroParte,
+            string descripcion, int idProveedor, decimal precioCompra, decimal precioUnitario);
+        DataTable Update(int id, string producto, bool esServicio, string numeroParte,
+            string descripcion, int idProveedor, decimal precioCompra, decimal precioUnitario);
         DataTable Delete(int id);
     }
 }

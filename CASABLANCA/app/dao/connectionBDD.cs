@@ -13,7 +13,7 @@ namespace CASABLANCA.app.dao
         //CADENA GAMER
         //public static string cadena = "Data Source=LAPTOP-QDP5DH58\\SQLEXPRESS;Initial Catalog=CASABLANCA_DEV; Integrated Security=True";
         //CADENA CASABLANCA
-        //public static string cadena = "Data Source=DESKTOP-3A0EPT1\\OPUSDB;Initial Catalog=master; Integrated Security=True";
+        //public static string cadena = "data source=desktop-3a0ept1\\opusdb;initial catalog=master; integrated security=true";
         //CADENA PRO
         public static string cadena = "Data Source=DESKTOP-F3EHM0T\\SQLEXPRESS;Initial Catalog=master; Integrated Security=True";
         //public static string _cadena = ConnectionStrings["CASABLANCA"].ConnectionString;

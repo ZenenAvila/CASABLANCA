@@ -12,17 +12,21 @@ namespace CASABLANCA.app.business
     {
         ServiciosProductosDao dao = new ServiciosProductosDao();
 
-        public DataTable Get()
+        public DataTable Get(int idProveedor)
         {
-            return dao.Get();
+            return dao.Get(idProveedor);
         }
-        public DataTable Insert(string codigo, string nombre, decimal precioUnitario)
+        public DataTable Insert(string producto, bool esServicio, string numeroParte,
+            string descripcion, int idProveedor, decimal precioCompra, decimal precioUnitario)
         {
-            return dao.Insert(codigo, nombre, precioUnitario);
+            return dao.Insert(producto, esServicio, numeroParte,
+            descripcion, idProveedor, precioCompra, precioUnitario);
         }
-        public DataTable Update(int id, string codigo, string nombre, decimal precioUnitario)
+        public DataTable Update(int id, string producto, bool esServicio, string numeroParte,
+            string descripcion, int idProveedor, decimal precioCompra, decimal precioUnitario)
         {
-            return dao.Update(id,codigo,nombre,precioUnitario);
+            return dao.Update(id, producto,  esServicio, numeroParte,
+            descripcion, idProveedor, precioCompra, precioUnitario);
         }
         public DataTable Delete(int id)
         {

@@ -10,10 +10,32 @@ namespace CASABLANCA.app.business
 {
     class ProductosProveedoresBus : IProductosProveedores
     {
+        ServiciosProductosDao daoPS = new ServiciosProductosDao();
         ProductosProveedoresDao dao = new ProductosProveedoresDao();
         ProveedoresDao daoProveedores = new ProveedoresDao();
         UniProveedoresServiciosProductos daoUniPSP=new UniProveedoresServiciosProductos();
         CatProductosServiciosDao daoCatProdServ = new CatProductosServiciosDao();
+
+        public DataTable GetProductoServicio(int idProveedor)
+        {
+            return daoPS.Get(idProveedor);
+        }
+        public DataTable InsertProductoServicio(string producto, bool esServicio, string numeroParte,
+            string descripcion, int idProveedor, decimal precioCompra, decimal precioUnitario)
+        {
+            return daoPS.Insert(producto, esServicio, numeroParte,
+            descripcion, idProveedor, precioCompra, precioUnitario);
+        }
+        public DataTable UpdateProductoServicio(int id, string producto, bool esServicio, string numeroParte,
+            string descripcion, int idProveedor, decimal precioCompra, decimal precioUnitario)
+        {
+            return daoPS.Update(id, producto, esServicio, numeroParte,
+            descripcion, idProveedor, precioCompra, precioUnitario);
+        }
+        public DataTable DeleteProductoServicio(int id)
+        {
+            return daoPS.Delete(id);
+        }
 
         public DataTable GetCatPS()
         {

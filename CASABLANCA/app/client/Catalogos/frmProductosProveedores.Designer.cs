@@ -28,14 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbProveedores = new System.Windows.Forms.GroupBox();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.lblAnchoCeldas = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
             this.dgvProductosProveedores = new System.Windows.Forms.DataGridView();
             this.gbDatos = new System.Windows.Forms.GroupBox();
             this.pbxActualizar = new System.Windows.Forms.PictureBox();
             this.tcDatos = new System.Windows.Forms.TabControl();
+            this.tpProductosServicios = new System.Windows.Forms.TabPage();
+            this.txtPSPrecioPublico = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtPSPrecioCompra = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtPSDescripcion = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.chkEsServicio = new System.Windows.Forms.CheckBox();
+            this.txtPSProducto = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tpBalatas = new System.Windows.Forms.TabPage();
             this.chkBalatasAbutmen = new System.Windows.Forms.CheckBox();
             this.lbl1 = new System.Windows.Forms.Label();
@@ -78,7 +89,6 @@
             this.pbxImportar = new System.Windows.Forms.PictureBox();
             this.lblMarca = new System.Windows.Forms.Label();
             this.cbxProveedor = new System.Windows.Forms.ComboBox();
-            this.lblProducto = new System.Windows.Forms.Label();
             this.cbxProducto = new System.Windows.Forms.ComboBox();
             this.txtNoParte = new System.Windows.Forms.TextBox();
             this.lblNoParte = new System.Windows.Forms.Label();
@@ -94,6 +104,7 @@
             this.gbDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxActualizar)).BeginInit();
             this.tcDatos.SuspendLayout();
+            this.tpProductosServicios.SuspendLayout();
             this.tpBalatas.SuspendLayout();
             this.tbpDatos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbExportar)).BeginInit();
@@ -106,6 +117,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(190)))), ((int)(((byte)(30)))));
+            this.gbProveedores.Controls.Add(this.lblTotal);
             this.gbProveedores.Controls.Add(this.lblAnchoCeldas);
             this.gbProveedores.Controls.Add(this.lblRegistros);
             this.gbProveedores.Controls.Add(this.dgvProductosProveedores);
@@ -118,6 +130,15 @@
             this.gbProveedores.TabIndex = 9;
             this.gbProveedores.TabStop = false;
             this.gbProveedores.Text = "Productos Proveedores";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(19, 528);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(69, 20);
+            this.lblTotal.TabIndex = 9;
+            this.lblTotal.Text = "label15";
             // 
             // lblAnchoCeldas
             // 
@@ -143,8 +164,8 @@
             // dgvProductosProveedores
             // 
             this.dgvProductosProveedores.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProductosProveedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvProductosProveedores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductosProveedores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -160,6 +181,7 @@
             this.dgvProductosProveedores.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvProductosProveedores.Size = new System.Drawing.Size(1174, 494);
             this.dgvProductosProveedores.TabIndex = 4;
+            this.dgvProductosProveedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductosProveedores_CellClick);
             this.dgvProductosProveedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductosProveedores_CellDoubleClick);
             // 
             // gbDatos
@@ -171,7 +193,6 @@
             this.gbDatos.Controls.Add(this.pbxImportar);
             this.gbDatos.Controls.Add(this.lblMarca);
             this.gbDatos.Controls.Add(this.cbxProveedor);
-            this.gbDatos.Controls.Add(this.lblProducto);
             this.gbDatos.Controls.Add(this.cbxProducto);
             this.gbDatos.Controls.Add(this.txtNoParte);
             this.gbDatos.Controls.Add(this.lblNoParte);
@@ -205,6 +226,7 @@
             // 
             // tcDatos
             // 
+            this.tcDatos.Controls.Add(this.tpProductosServicios);
             this.tcDatos.Controls.Add(this.tpBalatas);
             this.tcDatos.Controls.Add(this.tbpDatos);
             this.tcDatos.Location = new System.Drawing.Point(10, 68);
@@ -213,6 +235,112 @@
             this.tcDatos.Size = new System.Drawing.Size(1066, 171);
             this.tcDatos.TabIndex = 30;
             this.tcDatos.SelectedIndexChanged += new System.EventHandler(this.tcDatos_SelectedIndexChanged);
+            // 
+            // tpProductosServicios
+            // 
+            this.tpProductosServicios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(190)))), ((int)(((byte)(30)))));
+            this.tpProductosServicios.Controls.Add(this.txtPSPrecioPublico);
+            this.tpProductosServicios.Controls.Add(this.label14);
+            this.tpProductosServicios.Controls.Add(this.txtPSPrecioCompra);
+            this.tpProductosServicios.Controls.Add(this.label13);
+            this.tpProductosServicios.Controls.Add(this.txtPSDescripcion);
+            this.tpProductosServicios.Controls.Add(this.label12);
+            this.tpProductosServicios.Controls.Add(this.chkEsServicio);
+            this.tpProductosServicios.Controls.Add(this.txtPSProducto);
+            this.tpProductosServicios.Controls.Add(this.label11);
+            this.tpProductosServicios.Location = new System.Drawing.Point(4, 29);
+            this.tpProductosServicios.Name = "tpProductosServicios";
+            this.tpProductosServicios.Padding = new System.Windows.Forms.Padding(3);
+            this.tpProductosServicios.Size = new System.Drawing.Size(1058, 138);
+            this.tpProductosServicios.TabIndex = 2;
+            this.tpProductosServicios.Text = "Productos y Servicios";
+            // 
+            // txtPSPrecioPublico
+            // 
+            this.txtPSPrecioPublico.Location = new System.Drawing.Point(279, 93);
+            this.txtPSPrecioPublico.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPSPrecioPublico.Name = "txtPSPrecioPublico";
+            this.txtPSPrecioPublico.Size = new System.Drawing.Size(187, 26);
+            this.txtPSPrecioPublico.TabIndex = 40;
+            this.txtPSPrecioPublico.Text = "0.00";
+            this.txtPSPrecioPublico.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(275, 69);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(137, 20);
+            this.label14.TabIndex = 39;
+            this.label14.Text = "Precio Publico:";
+            // 
+            // txtPSPrecioCompra
+            // 
+            this.txtPSPrecioCompra.Location = new System.Drawing.Point(20, 93);
+            this.txtPSPrecioCompra.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPSPrecioCompra.Name = "txtPSPrecioCompra";
+            this.txtPSPrecioCompra.Size = new System.Drawing.Size(187, 26);
+            this.txtPSPrecioCompra.TabIndex = 38;
+            this.txtPSPrecioCompra.Text = "0.00";
+            this.txtPSPrecioCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(16, 69);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(140, 20);
+            this.label13.TabIndex = 37;
+            this.label13.Text = "Precio Compra:";
+            // 
+            // txtPSDescripcion
+            // 
+            this.txtPSDescripcion.Location = new System.Drawing.Point(533, 32);
+            this.txtPSDescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPSDescripcion.Name = "txtPSDescripcion";
+            this.txtPSDescripcion.Size = new System.Drawing.Size(334, 26);
+            this.txtPSDescripcion.TabIndex = 36;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(529, 10);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(116, 20);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "Descripción:";
+            // 
+            // chkEsServicio
+            // 
+            this.chkEsServicio.AutoSize = true;
+            this.chkEsServicio.Location = new System.Drawing.Point(20, 30);
+            this.chkEsServicio.Name = "chkEsServicio";
+            this.chkEsServicio.Size = new System.Drawing.Size(148, 24);
+            this.chkEsServicio.TabIndex = 34;
+            this.chkEsServicio.Text = "¿Es Servicio?";
+            this.chkEsServicio.UseVisualStyleBackColor = true;
+            this.chkEsServicio.CheckedChanged += new System.EventHandler(this.chkEsServicio_CheckedChanged);
+            // 
+            // txtPSProducto
+            // 
+            this.txtPSProducto.Location = new System.Drawing.Point(188, 32);
+            this.txtPSProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPSProducto.Name = "txtPSProducto";
+            this.txtPSProducto.Size = new System.Drawing.Size(299, 26);
+            this.txtPSProducto.TabIndex = 33;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(184, 10);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 20);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "Producto:";
             // 
             // tpBalatas
             // 
@@ -643,28 +771,19 @@
             this.cbxProveedor.Text = "3L Original";
             this.cbxProveedor.SelectedIndexChanged += new System.EventHandler(this.cbxProveedor_SelectedIndexChanged);
             // 
-            // lblProducto
-            // 
-            this.lblProducto.AutoSize = true;
-            this.lblProducto.Location = new System.Drawing.Point(11, 37);
-            this.lblProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(90, 20);
-            this.lblProducto.TabIndex = 20;
-            this.lblProducto.Text = "Producto:";
-            // 
             // cbxProducto
             // 
             this.cbxProducto.FormattingEnabled = true;
             this.cbxProducto.Items.AddRange(new object[] {
+            "Productos y Servicios",
             "Balatas",
             "Clutch"});
-            this.cbxProducto.Location = new System.Drawing.Point(131, 33);
+            this.cbxProducto.Location = new System.Drawing.Point(16, 33);
             this.cbxProducto.Margin = new System.Windows.Forms.Padding(4);
             this.cbxProducto.Name = "cbxProducto";
-            this.cbxProducto.Size = new System.Drawing.Size(187, 28);
+            this.cbxProducto.Size = new System.Drawing.Size(302, 28);
             this.cbxProducto.TabIndex = 19;
-            this.cbxProducto.Text = "Balatas";
+            this.cbxProducto.Text = "Productos y Servicios";
             this.cbxProducto.SelectedIndexChanged += new System.EventHandler(this.cbxProducto_SelectedIndexChanged);
             // 
             // txtNoParte
@@ -727,6 +846,7 @@
             // 
             // txtId
             // 
+            this.txtId.Enabled = false;
             this.txtId.Location = new System.Drawing.Point(671, 33);
             this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
@@ -768,6 +888,8 @@
             this.gbDatos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxActualizar)).EndInit();
             this.tcDatos.ResumeLayout(false);
+            this.tpProductosServicios.ResumeLayout(false);
+            this.tpProductosServicios.PerformLayout();
             this.tpBalatas.ResumeLayout(false);
             this.tpBalatas.PerformLayout();
             this.tbpDatos.ResumeLayout(false);
@@ -793,7 +915,6 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblMarca;
-        private System.Windows.Forms.Label lblProducto;
         private System.Windows.Forms.PictureBox pbxImportar;
         private System.Windows.Forms.OpenFileDialog ofdExploradorArchivos;
         private System.Windows.Forms.PictureBox pcbExportar;
@@ -840,5 +961,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pbxActualizar;
         private System.Windows.Forms.CheckBox chkBalatasAbutmen;
+        private System.Windows.Forms.TabPage tpProductosServicios;
+        private System.Windows.Forms.TextBox txtPSPrecioPublico;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtPSPrecioCompra;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtPSDescripcion;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox chkEsServicio;
+        private System.Windows.Forms.TextBox txtPSProducto;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

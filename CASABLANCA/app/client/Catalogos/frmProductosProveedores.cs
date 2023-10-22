@@ -21,16 +21,18 @@ namespace CASABLANCA.app.client.Catalogos
         ProductosProveedoresBus business=new ProductosProveedoresBus();
         DataTable dtProductos;
         frmIngreso Ingreso;
+        bool selecProducto = false;
         int idControles = 0;
         public frmProductosProveedores()
         {
             InitializeComponent();
         }
 
-        public frmProductosProveedores(frmIngreso ingreso)
+        public frmProductosProveedores(frmIngreso ingreso,bool _selecProducto=false)
         {
             InitializeComponent();
             Ingreso = ingreso;
+            selecProducto=_selecProducto;
         }
 
         private void frmProductosProveedores_Load(object sender, EventArgs e)
@@ -38,6 +40,17 @@ namespace CASABLANCA.app.client.Catalogos
             cargarProductos();
             cargarProveedores();
             consultar();
+
+            if (Ingreso != null)
+            {
+                int indice = cbxProducto.FindStringExact(Ingreso.ProdServDgv);
+
+                if (indice != -1)
+                {
+                    cbxProducto.SelectedIndex = indice; // Selecciona el elemento encontrado
+                }
+                cbxProducto.Enabled = false;
+            }
             //if(File.Exists(ofdExploradorArchivos.FileName))
             //    {
 
@@ -76,15 +89,17 @@ namespace CASABLANCA.app.client.Catalogos
         {
             switch (cbxProducto.Text)
             {
+                case "Productos y Servicios":
+                    idControles = 0;
+                    break;
                 case "Clutch":
-                    idControles = 1;
-                    tcDatos.SelectedTab = tcDatos.TabPages[idControles];
+                    idControles = 2;
                     break;
                 case "Balatas":
-                    idControles = 0;
-                    tcDatos.SelectedTab = tcDatos.TabPages[idControles];
+                    idControles = 1;
                     break;
             }
+            tcDatos.SelectedTab = tcDatos.TabPages[idControles];
 
             consultar();
         }
@@ -101,7 +116,6 @@ namespace CASABLANCA.app.client.Catalogos
             {
                 cbxProducto.SelectedValue = i;
             }
-
         }
 
         private void descongelarDGV()
@@ -115,28 +129,31 @@ namespace CASABLANCA.app.client.Catalogos
         public void consultar()
         {
 
-            switch (cbxProducto.Text)
-            {                
-                case "Clutch":
-                    descongelarDGV();
-                 dgvProductosProveedores.DataSource = business.GetClutch(Convert.ToInt32(cbxProveedor.SelectedValue.ToString()));
-                    dgvProductosProveedores.Columns[0].Frozen = true;
-                    dgvProductosProveedores.Columns[1].Frozen = true;
-                    dgvProductosProveedores.Columns[2].Frozen = true;
-                    dgvProductosProveedores.Columns[3].Frozen = true;
-                    //dgvProductosProveedores.Columns[4].Frozen = true;
-                    break;
-                case "Balatas":
-                    if (cbxProveedor.SelectedValue != null)
-                    {
-                        descongelarDGV();
+            if (cbxProveedor.SelectedValue != null)
+            {
+                descongelarDGV();
+                switch (cbxProducto.Text)
+                {
+                    case "Clutch":
+                        dgvProductosProveedores.DataSource = business.GetClutch(Convert.ToInt32(cbxProveedor.SelectedValue.ToString()));
+                        dgvProductosProveedores.Columns[0].Frozen = true;
+                        dgvProductosProveedores.Columns[1].Frozen = true;
+                        dgvProductosProveedores.Columns[2].Frozen = true;
+                        dgvProductosProveedores.Columns[3].Frozen = true;
+                        //dgvProductosProveedores.Columns[4].Frozen = true;
+                        break;
+                    case "Balatas":
                         dgvProductosProveedores.DataSource = business.GetBalatas(Convert.ToInt32(cbxProveedor.SelectedValue.ToString()));
                         dgvProductosProveedores.Columns[0].Frozen = true;
                         dgvProductosProveedores.Columns[1].Frozen = true;
                         dgvProductosProveedores.Columns[2].Frozen = true;
                         //dgvProductosProveedores.Columns[3].Frozen = true;
-                    }
-                    break;
+
+                        break;
+                    case "Productos y Servicios":
+                        dgvProductosProveedores.DataSource = business.GetProductoServicio(Convert.ToInt32(cbxProveedor.SelectedValue.ToString()));
+                        break;
+                }
             }
             dgvProductosProveedores.Refresh();
             lblRegistros.Text = "Total de Registros: " + dgvProductosProveedores.RowCount;
@@ -397,6 +414,10 @@ namespace CASABLANCA.app.client.Catalogos
                                 "Datos Faltantes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         break;
+                    case "Productos y Servicios":
+                        business.InsertProductoServicio(txtPSProducto.Text, chkEsServicio.Checked, txtNoParte.Text, txtPSDescripcion.Text,
+                            Convert.ToInt32(cbxProveedor.SelectedValue), Convert.ToDecimal(txtPSPrecioCompra.Text), Convert.ToDecimal(txtPSPrecioPublico.Text));
+                        break;
                 }
                 consultar();
             }
@@ -422,12 +443,14 @@ namespace CASABLANCA.app.client.Catalogos
                         business = new ProductosProveedoresBus();
                         switch (cbxProducto.Text)
                         {
-                            case "Balatas":
-                                business.DeleteBalatas(Convert.ToInt32(txtId.Text));
+                            case "Productos y Servicios":
+                                business.DeleteProductoServicio(Convert.ToInt32(txtId.Text));
                                 break;
-
                             case "Clutch":
                                 business.DeleteClutch(Convert.ToInt32(txtId.Text));
+                                break;
+                            case "Balatas":
+                                business.DeleteBalatas(Convert.ToInt32(txtId.Text));
                                 break;
                         }
                         consultar();
@@ -452,15 +475,11 @@ namespace CASABLANCA.app.client.Catalogos
                 business = new ProductosProveedoresBus();
                 switch (cbxProducto.Text)
                 {
-                    case "Balatas":
-                        if (!string.IsNullOrEmpty(txtId.Text) &&
-                            !string.IsNullOrEmpty(cbxProveedor.Text) &&
-                            !string.IsNullOrEmpty(txtNoParte.Text) &&
-                            !string.IsNullOrEmpty(txtBalatasMarca.Text) &&
-                            !string.IsNullOrEmpty(txtBalatasPosicion.Text))
+                    case "Productos y Servicios":
+                        if (true)
                         {
-                            business.UpdateBalatas(Convert.ToInt32(txtId.Text),Convert.ToInt32(cbxProveedor.SelectedValue), txtNoParte.Text, txtBalatasMarca.Text, txtBalatasPosicion.Text,chkBalatasAbutmen.Checked,
-                            txtBalatasAplicacion.Text, txtBalatasModelo.Text, txtBalatasFormula.Text, Convert.ToDecimal(txtPrecioPublico.Text), txtBalatasObservacion.Text);
+                            business.UpdateProductoServicio(Convert.ToInt32(txtId.Text),txtPSProducto.Text,chkEsServicio.Checked,txtNoParte.Text,txtPSDescripcion.Text, 
+                                Convert.ToInt32(cbxProveedor.SelectedValue),Convert.ToDecimal(txtPSPrecioCompra.Text),Convert.ToDecimal( txtPSPrecioPublico.Text) );
                         }
                         else
                         {
@@ -483,6 +502,23 @@ namespace CASABLANCA.app.client.Catalogos
                                 "Datos Faltantes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                         break;
+
+                    case "Balatas":
+                        if (!string.IsNullOrEmpty(txtId.Text) &&
+                            !string.IsNullOrEmpty(cbxProveedor.Text) &&
+                            !string.IsNullOrEmpty(txtNoParte.Text) &&
+                            !string.IsNullOrEmpty(txtBalatasMarca.Text) &&
+                            !string.IsNullOrEmpty(txtBalatasPosicion.Text))
+                        {
+                            business.UpdateBalatas(Convert.ToInt32(txtId.Text), Convert.ToInt32(cbxProveedor.SelectedValue), txtNoParte.Text, txtBalatasMarca.Text, txtBalatasPosicion.Text, chkBalatasAbutmen.Checked,
+                            txtBalatasAplicacion.Text, txtBalatasModelo.Text, txtBalatasFormula.Text, Convert.ToDecimal(txtPrecioPublico.Text), txtBalatasObservacion.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Debe Ingresar los siguientes datos: Id, Producto, Proveedor, No. Parte, Aplicación",
+                                "Datos Faltantes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        break;
                 }
                 consultar();
             }
@@ -496,20 +532,19 @@ namespace CASABLANCA.app.client.Catalogos
         {
             int row = dgvProductosProveedores.CurrentCell.RowIndex;
             txtId.Text = dgvProductosProveedores.Rows[row].Cells["ID"].Value.ToString();
-            cbxProveedor.SelectedValue = dgvProductosProveedores.Rows[row].Cells["ID_PROVEEDOR"].Value.ToString();
+            //cbxProveedor.SelectedValue = dgvProductosProveedores.Rows[row].Cells["ID_PROVEEDOR"].Value.ToString();
+            //cbxProveedor.SelectedValue = cbxProveedor.SelectedValue;
             txtNoParte.Text = dgvProductosProveedores.Rows[row].Cells["NUMERO_PARTE"].Value.ToString();
 
             switch (cbxProducto.Text.ToUpper())
             {
-                case "BALATAS":
-                    txtBalatasMarca.Text = dgvProductosProveedores.Rows[row].Cells["MARCA"].Value.ToString();
-                    txtBalatasPosicion.Text = dgvProductosProveedores.Rows[row].Cells["POSICION"].Value.ToString();
-                    txtBalatasObservacion.Text = dgvProductosProveedores.Rows[row].Cells["OBSERVACIONES"].Value.ToString();
-                    chkBalatasAbutmen.Checked =Convert.ToBoolean( dgvProductosProveedores.Rows[row].Cells["ABUTMEN"].Value.ToString());
-                    txtBalatasAplicacion.Text = dgvProductosProveedores.Rows[row].Cells["APLICACION"].Value.ToString();
-                    txtBalatasModelo.Text = dgvProductosProveedores.Rows[row].Cells["MODELO"].Value.ToString();
-                    txtBalatasFormula.Text = dgvProductosProveedores.Rows[row].Cells["FORMULA"].Value.ToString();
-                    txtPrecioPublico.Text = dgvProductosProveedores.Rows[row].Cells["PRECIO_PUBLICO"].Value.ToString();
+
+                case "PRODUCTOS Y SERVICIOS":
+                    chkEsServicio.Checked = Convert.ToBoolean(dgvProductosProveedores.Rows[row].Cells["ES_SERVICIO"].Value.ToString());
+                    txtPSProducto.Text = dgvProductosProveedores.Rows[row].Cells["PRODUCTO"].Value.ToString();
+                    txtPSDescripcion.Text = dgvProductosProveedores.Rows[row].Cells["DESCRIPCION"].Value.ToString();
+                    txtPSPrecioCompra.Text = dgvProductosProveedores.Rows[row].Cells["PRECIO_COMPRA"].Value.ToString();
+                    txtPSPrecioPublico.Text = dgvProductosProveedores.Rows[row].Cells["PRECIO_PUBLICO"].Value.ToString();
                     break;
 
                 case "CLUTCH":
@@ -523,6 +558,16 @@ namespace CASABLANCA.app.client.Catalogos
                     txtClutchAisin.Text = dgvProductosProveedores.Rows[row].Cells["EQUIVALENCIA_AISIN"].Value.ToString();
                     txtClutchPrecioCompra.Text = dgvProductosProveedores.Rows[row].Cells["PRECIO_COMPRA"].Value.ToString();
                     txtClutchPrecioPublico.Text = dgvProductosProveedores.Rows[row].Cells["PRECIO_PUBLICO"].Value.ToString();
+                    break;
+                case "BALATAS":
+                    txtBalatasMarca.Text = dgvProductosProveedores.Rows[row].Cells["MARCA"].Value.ToString();
+                    txtBalatasPosicion.Text = dgvProductosProveedores.Rows[row].Cells["POSICION"].Value.ToString();
+                    txtBalatasObservacion.Text = dgvProductosProveedores.Rows[row].Cells["OBSERVACIONES"].Value.ToString();
+                    chkBalatasAbutmen.Checked = Convert.ToBoolean(dgvProductosProveedores.Rows[row].Cells["ABUTMEN"].Value.ToString());
+                    txtBalatasAplicacion.Text = dgvProductosProveedores.Rows[row].Cells["APLICACION"].Value.ToString();
+                    txtBalatasModelo.Text = dgvProductosProveedores.Rows[row].Cells["MODELO"].Value.ToString();
+                    txtBalatasFormula.Text = dgvProductosProveedores.Rows[row].Cells["FORMULA"].Value.ToString();
+                    txtPrecioPublico.Text = dgvProductosProveedores.Rows[row].Cells["PRECIO_PUBLICO"].Value.ToString();
                     break;
             }
             btnModificar.Visible = true;
@@ -643,10 +688,10 @@ namespace CASABLANCA.app.client.Catalogos
 
             }
 
-            if(Ingreso!=null)
-            {
-                Ingreso.cargarProductos();
-            }
+            //if(Ingreso!=null)
+            //{
+            //    Ingreso.cargarProductos();
+            //}
         }
 
         private void tcDatos_SelectedIndexChanged(object sender, EventArgs e)
@@ -666,5 +711,27 @@ namespace CASABLANCA.app.client.Catalogos
             this.BringToFront();
         }
         #endregion
+
+        private void dgvProductosProveedores_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (selecProducto)
+            {
+                string columna = dgvProductosProveedores.Columns[e.ColumnIndex].Name;
+                if (columna == "NUMERO_PARTE")
+                {
+                    int idRow = dgvProductosProveedores.CurrentCell.RowIndex;
+                    string noParte = dgvProductosProveedores.Rows[idRow].Cells["NUMERO_PARTE"].Value.ToString();
+                    string precioUni = dgvProductosProveedores.Rows[idRow].Cells["PRECIO_PUBLICO"].Value.ToString();
+                    Ingreso.cargarProducoServicio(noParte, precioUni);
+                    this.Close();
+
+                }
+            }
+        }
+
+        private void chkEsServicio_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPSPrecioCompra.Enabled = chkEsServicio.Checked;
+        }
     }
 }
