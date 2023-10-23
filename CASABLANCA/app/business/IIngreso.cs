@@ -18,5 +18,9 @@ namespace CASABLANCA.app.business
         DataTable GetIngresoRegistros(int idIngreso);
         void InsertIngresoRegistros(IngresoRegistrosCls obj);
         void DeleteIngresoRegistros(int id);
+        DataTable GetIngresoChecklist(int idIngreso);
+        void DeleteIngresoChecklist(int id);
+
+        
     }
 }

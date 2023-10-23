@@ -142,5 +142,50 @@ namespace CASABLANCA.app.dao
             cmd.ExecuteReader();
             cn.close();
         }
+
+        public DataTable GetIngresoChecklist(int idIngreso)
+        {
+            cn.open();
+            SqlCommand cmd = new SqlCommand("SP_GET_INGRESO_CHECKLIST", cn._connection);
+            cmd.Parameters.AddWithValue("@ID_INGRESO", idIngreso);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            cn.close();
+            return dt;
+        }
+
+        public void InsertIngresoChecklist(IngresoCheckListeCls obj)
+        {
+            cn.open();
+            SqlCommand cmd = new SqlCommand("SP_INSERT_INGRESO_CHECKLIST", cn._connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID_INGRESO", obj.IdIngreso);
+            cmd.Parameters.AddWithValue("@TABLA", obj.Tabla);
+            cmd.Parameters.AddWithValue("@ID_CHECKLIST", obj.IdChecklist);
+            cmd.Parameters.AddWithValue("@NUMERO_PARTE", obj.NoParte);
+            cmd.Parameters.AddWithValue("@CAT_PROD_SERV", obj.CatProdServ);
+            cmd.Parameters.AddWithValue("@PROVEEDOR", obj.Proveedor);
+            cmd.Parameters.AddWithValue("@PRODUCTO_SERVICIO", obj.ProductoServicio);
+            cmd.Parameters.AddWithValue("@PRECIO_UNITARIO", obj.PrecioUnitario);
+            cmd.Parameters.AddWithValue("@CANTIDAD", obj.Cantidad);
+            cmd.Parameters.AddWithValue("@TOTAL", obj.Total);
+            cmd.Parameters.AddWithValue("@REQUERIDO", obj.Requerido);
+            cmd.Parameters.AddWithValue("@AUTORIZADO", obj.Autorizado);
+            cmd.ExecuteReader();
+            cn.close();
+        }
+
+        public void DeleteIngresoChecklist(int id)
+        {
+            cn.open();
+            SqlCommand cmd = new SqlCommand("SP_DELETE_INGRESO_CHECKLIST", cn._connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID_INGRESO", id);
+            cmd.ExecuteReader();
+            cn.close();
+        }
     }
 }

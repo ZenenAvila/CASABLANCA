@@ -67,4 +67,35 @@ namespace CASABLANCA.app.cls
         public int IdCatProdServ { get => idCatProdServ; set => idCatProdServ = value; }
         public int IdProveedor { get => idProveedor; set => idProveedor = value; }
     }
+
+    public class IngresoCheckListeCls
+    { 
+        int id;
+        int idIngreso;
+        string tabla;
+        int idChecklist;
+        string noParte;
+        string catProdServ;
+        string proveedor;
+        string productoServicio;
+        decimal precioUnitario;
+        int cantidad;
+        decimal total;
+        bool requerido;
+        bool autorizado;
+
+        public int Id { get => id; set => id = value; }
+        public int IdIngreso { get => idIngreso; set => idIngreso = value; }
+        public string Tabla { get => tabla; set => tabla = value; }
+        public int IdChecklist { get => idChecklist; set => idChecklist = value; }
+        public string NoParte { get => noParte; set => noParte = value; }
+        public string CatProdServ { get => catProdServ; set => catProdServ = value; }
+        public string Proveedor { get => proveedor; set => proveedor = value; }
+        public string ProductoServicio { get => productoServicio; set => productoServicio = value; }
+        public decimal PrecioUnitario { get => precioUnitario; set => precioUnitario = value; }
+        public int Cantidad { get => cantidad; set => cantidad = value; }
+        public decimal Total { get => total; set => total = value; }
+        public bool Requerido { get => requerido; set => requerido = value; }
+        public bool Autorizado { get => autorizado; set => autorizado = value; }
+    }
 }

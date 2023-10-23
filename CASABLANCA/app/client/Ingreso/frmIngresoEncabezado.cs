@@ -49,6 +49,7 @@ namespace CASABLANCA.app.client.Ingreso
                     int row = dgvEncabezados.CurrentCell.RowIndex;
                     business.DeleteIngreso(Convert.ToInt32(dgvEncabezados.Rows[row].Cells[1].Value.ToString()));
                     business.DeleteIngresoRegistros(Convert.ToInt32(dgvEncabezados.Rows[row].Cells[1].Value.ToString()));
+                    business.DeleteIngresoChecklist(Convert.ToInt32(dgvEncabezados.Rows[row].Cells[1].Value.ToString()));
                     dgvEncabezados.Rows.Remove(dgvEncabezados.Rows[row]);
                     lblRegistros.Text = "Total de Registros: " + dgvEncabezados.RowCount;
                 }

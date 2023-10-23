@@ -54,6 +54,21 @@ namespace CASABLANCA.app.business
             dao.DeleteIngresoRegistros(id);
         }
 
+        public DataTable GetIngresoChecklist(int id)
+        {
+            return dao.GetIngresoChecklist(id);
+        }
+
+        public void InsertIngresoChecklist(IngresoCheckListeCls obj)
+        {
+            dao.InsertIngresoChecklist(obj);
+        }
+
+        public void DeleteIngresoChecklist(int id)
+        {
+            dao.DeleteIngresoChecklist(id);
+        }
+
         public void updateExistencia(int nuevo, int idProceso, string proceso,
             string tabla, int idProducto, string noParte,
              int idProveedor, string marca, decimal precioUni, int cantidad)

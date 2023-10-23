@@ -93,14 +93,6 @@
             this.autorizadoClutch = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tpAfina = new System.Windows.Forms.TabPage();
             this.dgvAfinacion = new System.Windows.Forms.DataGridView();
-            this.noParteAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idProdServAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productoAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioUniAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requeridoAfinacion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.autorizaoAfinacion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tpSuspencion = new System.Windows.Forms.TabPage();
             this.dgvSuspencion = new System.Windows.Forms.DataGridView();
             this.noParteSuspencion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,6 +123,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.noParteAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idProdServAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productoAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioUniAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalAfinacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requeridoAfinacion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.autorizadoAfinacion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pbxEncabezados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNuevoAuto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNuevoCliente)).BeginInit();
@@ -804,7 +804,7 @@
             this.cantidadAfinacion,
             this.totalAfinacion,
             this.requeridoAfinacion,
-            this.autorizaoAfinacion});
+            this.autorizadoAfinacion});
             this.dgvAfinacion.Location = new System.Drawing.Point(8, 13);
             this.dgvAfinacion.Margin = new System.Windows.Forms.Padding(4);
             this.dgvAfinacion.MultiSelect = false;
@@ -815,70 +815,6 @@
             this.dgvAfinacion.Size = new System.Drawing.Size(753, 611);
             this.dgvAfinacion.TabIndex = 96;
             this.dgvAfinacion.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAfinacion_CellValueChanged);
-            // 
-            // noParteAfinacion
-            // 
-            this.noParteAfinacion.FillWeight = 144.267F;
-            this.noParteAfinacion.HeaderText = "No. Parte";
-            this.noParteAfinacion.MinimumWidth = 6;
-            this.noParteAfinacion.Name = "noParteAfinacion";
-            this.noParteAfinacion.ReadOnly = true;
-            this.noParteAfinacion.Width = 97;
-            // 
-            // idProdServAfinacion
-            // 
-            this.idProdServAfinacion.HeaderText = "IdProdServ";
-            this.idProdServAfinacion.MinimumWidth = 6;
-            this.idProdServAfinacion.Name = "idProdServAfinacion";
-            this.idProdServAfinacion.Visible = false;
-            this.idProdServAfinacion.Width = 107;
-            // 
-            // productoAfinacion
-            // 
-            this.productoAfinacion.FillWeight = 150.6008F;
-            this.productoAfinacion.HeaderText = "Producto";
-            this.productoAfinacion.MinimumWidth = 6;
-            this.productoAfinacion.Name = "productoAfinacion";
-            this.productoAfinacion.Width = 94;
-            // 
-            // precioUniAfinacion
-            // 
-            this.precioUniAfinacion.FillWeight = 126.2373F;
-            this.precioUniAfinacion.HeaderText = "Precio Uni.";
-            this.precioUniAfinacion.MinimumWidth = 6;
-            this.precioUniAfinacion.Name = "precioUniAfinacion";
-            this.precioUniAfinacion.Width = 106;
-            // 
-            // cantidadAfinacion
-            // 
-            this.cantidadAfinacion.FillWeight = 75.6815F;
-            this.cantidadAfinacion.HeaderText = "Cantidad";
-            this.cantidadAfinacion.MinimumWidth = 6;
-            this.cantidadAfinacion.Name = "cantidadAfinacion";
-            this.cantidadAfinacion.Width = 93;
-            // 
-            // totalAfinacion
-            // 
-            this.totalAfinacion.FillWeight = 52.26638F;
-            this.totalAfinacion.HeaderText = "Total";
-            this.totalAfinacion.MinimumWidth = 6;
-            this.totalAfinacion.Name = "totalAfinacion";
-            this.totalAfinacion.ReadOnly = true;
-            this.totalAfinacion.Width = 69;
-            // 
-            // requeridoAfinacion
-            // 
-            this.requeridoAfinacion.HeaderText = "Requerido";
-            this.requeridoAfinacion.MinimumWidth = 6;
-            this.requeridoAfinacion.Name = "requeridoAfinacion";
-            this.requeridoAfinacion.Width = 80;
-            // 
-            // autorizaoAfinacion
-            // 
-            this.autorizaoAfinacion.HeaderText = "Autorizado";
-            this.autorizaoAfinacion.MinimumWidth = 6;
-            this.autorizaoAfinacion.Name = "autorizaoAfinacion";
-            this.autorizaoAfinacion.Width = 82;
             // 
             // tpSuspencion
             // 
@@ -1222,6 +1158,70 @@
             this.label9.TabIndex = 79;
             this.label9.Text = "IVA:";
             // 
+            // noParteAfinacion
+            // 
+            this.noParteAfinacion.FillWeight = 144.267F;
+            this.noParteAfinacion.HeaderText = "No. Parte";
+            this.noParteAfinacion.MinimumWidth = 6;
+            this.noParteAfinacion.Name = "noParteAfinacion";
+            this.noParteAfinacion.ReadOnly = true;
+            this.noParteAfinacion.Width = 97;
+            // 
+            // idProdServAfinacion
+            // 
+            this.idProdServAfinacion.HeaderText = "IdProdServ";
+            this.idProdServAfinacion.MinimumWidth = 6;
+            this.idProdServAfinacion.Name = "idProdServAfinacion";
+            this.idProdServAfinacion.Visible = false;
+            this.idProdServAfinacion.Width = 107;
+            // 
+            // productoAfinacion
+            // 
+            this.productoAfinacion.FillWeight = 150.6008F;
+            this.productoAfinacion.HeaderText = "Producto";
+            this.productoAfinacion.MinimumWidth = 6;
+            this.productoAfinacion.Name = "productoAfinacion";
+            this.productoAfinacion.Width = 94;
+            // 
+            // precioUniAfinacion
+            // 
+            this.precioUniAfinacion.FillWeight = 126.2373F;
+            this.precioUniAfinacion.HeaderText = "Precio Uni.";
+            this.precioUniAfinacion.MinimumWidth = 6;
+            this.precioUniAfinacion.Name = "precioUniAfinacion";
+            this.precioUniAfinacion.Width = 106;
+            // 
+            // cantidadAfinacion
+            // 
+            this.cantidadAfinacion.FillWeight = 75.6815F;
+            this.cantidadAfinacion.HeaderText = "Cantidad";
+            this.cantidadAfinacion.MinimumWidth = 6;
+            this.cantidadAfinacion.Name = "cantidadAfinacion";
+            this.cantidadAfinacion.Width = 93;
+            // 
+            // totalAfinacion
+            // 
+            this.totalAfinacion.FillWeight = 52.26638F;
+            this.totalAfinacion.HeaderText = "Total";
+            this.totalAfinacion.MinimumWidth = 6;
+            this.totalAfinacion.Name = "totalAfinacion";
+            this.totalAfinacion.ReadOnly = true;
+            this.totalAfinacion.Width = 69;
+            // 
+            // requeridoAfinacion
+            // 
+            this.requeridoAfinacion.HeaderText = "Requerido";
+            this.requeridoAfinacion.MinimumWidth = 6;
+            this.requeridoAfinacion.Name = "requeridoAfinacion";
+            this.requeridoAfinacion.Width = 80;
+            // 
+            // autorizadoAfinacion
+            // 
+            this.autorizadoAfinacion.HeaderText = "Autorizado";
+            this.autorizadoAfinacion.MinimumWidth = 6;
+            this.autorizadoAfinacion.Name = "autorizadoAfinacion";
+            this.autorizadoAfinacion.Width = 82;
+            // 
             // frmIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1324,14 +1324,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn autorizadoClutch;
         private System.Windows.Forms.TabPage tpAfina;
         private System.Windows.Forms.DataGridView dgvAfinacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noParteAfinacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProdServAfinacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productoAfinacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioUniAfinacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadAfinacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalAfinacion;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn requeridoAfinacion;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn autorizaoAfinacion;
         private System.Windows.Forms.TabPage tpSuspencion;
         private System.Windows.Forms.DataGridView dgvSuspencion;
         private System.Windows.Forms.DataGridViewTextBoxColumn noParteSuspencion;
@@ -1360,5 +1352,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalFrenos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn requeridoFrenos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn autorizadoFrenos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noParteAfinacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProdServAfinacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productoAfinacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioUniAfinacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadAfinacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalAfinacion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn requeridoAfinacion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn autorizadoAfinacion;
     }
 }

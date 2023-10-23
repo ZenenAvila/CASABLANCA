@@ -374,7 +374,36 @@ namespace CASABLANCA.app.client.Ingreso
 
                 business.InsertIngresoRegistros(objRegistros);
             }
+            business.DeleteIngresoChecklist(Convert.ToInt32(txtId.Text));
+            guardarChecklist(dgvClutch);
+            guardarChecklist(dgvAfinacion);
+            guardarChecklist(dgvSuspencion);
+            guardarChecklist(dgvFrenos);
             actualizarExistencias();
+        }
+
+        private void guardarChecklist(DataGridView dgvChecklistInsert)
+        {
+            foreach (DataGridViewRow row in dgvChecklistInsert.Rows)
+            {
+                IngresoCheckListeCls obj = new IngresoCheckListeCls();
+                obj.Tabla = dgvChecklistInsert.Name.Replace("dgv", "");
+                if (row.Cells["precioUni" + obj.Tabla].Value != null)
+                {
+                    obj.IdIngreso = Convert.ToInt32(txtId.Text);
+                    obj.IdChecklist = row.Index;
+                    obj.NoParte = row.Cells["noParte" + obj.Tabla].Value.ToString();
+                    obj.CatProdServ = "";
+                    obj.Proveedor = "";
+                    obj.ProductoServicio = row.Cells["producto" + obj.Tabla].Value.ToString();
+                    obj.PrecioUnitario = Convert.ToDecimal(row.Cells["precioUni" + obj.Tabla].Value.ToString());
+                    obj.Cantidad = Convert.ToInt32(row.Cells["cantidad" + obj.Tabla].Value.ToString());
+                    obj.Total = Convert.ToDecimal(row.Cells["total" + obj.Tabla].Value.ToString());
+                    obj.Requerido = Convert.ToBoolean(row.Cells["requerido" + obj.Tabla].Value);
+                    obj.Autorizado = Convert.ToBoolean(row.Cells["autorizado" + obj.Tabla].Value);
+                    business.InsertIngresoChecklist(obj);
+                }
+            }
         }
 
         public void actualizarExistencias()
@@ -538,6 +567,7 @@ namespace CASABLANCA.app.client.Ingreso
                     rowRegistros["CANTIDAD"],
                     rowRegistros["TOTAL"]);
             }
+
         }
 
         private void dgvProductos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
