@@ -568,6 +568,43 @@ namespace CASABLANCA.app.client.Ingreso
                     rowRegistros["TOTAL"]);
             }
 
+            DataTable dtRegitros= business.GetIngresoChecklist(Convert.ToInt32(txtId.Text));
+            cargarCheckList(dgvClutch,dtRegitros);
+            cargarCheckList(dgvAfinacion,dtRegitros);
+            cargarCheckList(dgvSuspencion,dtRegitros);
+            cargarCheckList(dgvFrenos,dtRegitros);
+        }
+
+        private void cargarCheckList(DataGridView dgvCheckList_,DataTable dt)
+        {
+            string tabla = dgvCheckList_.Name.Replace("dgv", "");
+            DataTable nuevoDataTable = dt.Clone();
+
+            // Definir una condición para seleccionar las filas que contienen "Afinacion" en la columna "TABLA"
+            var condicion = new Func<DataRow, bool>(fila =>
+            {
+                string valorColumnaTabla = fila.Field<string>("TABLA");
+                return !string.IsNullOrEmpty(valorColumnaTabla) && valorColumnaTabla.Contains(tabla);
+            });
+
+            // Utilizar LINQ para seleccionar las filas que cumplen con la condición
+            var filasSeleccionadas = dt.AsEnumerable().Where(condicion);
+
+            // Copiar las filas seleccionadas al nuevo DataTable
+            foreach (var fila in filasSeleccionadas)
+            {
+                nuevoDataTable.ImportRow(fila);
+                int idFila = Convert.ToInt32(fila["ID_CHECKLIST"].ToString());
+                dgvCheckList_.Rows[idFila].Cells["noParte"+tabla].Value= fila["NUMERO_PARTE"].ToString();
+                dgvCheckList_.Rows[idFila].Cells["producto" + tabla].Value= fila["PRODUCTO_SERVICIO"].ToString();
+                dgvCheckList_.Rows[idFila].Cells["precioUni" + tabla].Value= fila["PRECIO_UNITARIO"].ToString();
+                dgvCheckList_.Rows[idFila].Cells["cantidad" + tabla].Value= fila["CANTIDAD"].ToString();
+                dgvCheckList_.Rows[idFila].Cells["total" + tabla].Value= fila["TOTAL"].ToString();
+                dgvCheckList_.Rows[idFila].Cells["requerido" + tabla].Value= Convert.ToBoolean(fila["REQUERIDO"].ToString());
+                dgvCheckList_.Rows[idFila].Cells["autorizado" + tabla].Value= Convert.ToBoolean(fila["AUTORIZADO"].ToString());
+
+            }
+            //dgvCheckList_.DataSource = nuevoDataTable;
         }
 
         private void dgvProductos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
